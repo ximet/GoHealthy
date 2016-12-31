@@ -1,43 +1,106 @@
 import React from 'react';
-import is from 'is_js';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 
-import './Day.scss';
+import styles from './styles';
 
-const Day = (props) => {
-    const getDayEvent = <div style={ { background: is.not.null(props.colorDay) ? '#52788F' : '' } } className={ getElementNameChain(Day, 'event-day') }></div>
+class Day extends React.Component {
 
-    const isCurrentDate = props.day.isSame(props.currentDay, 'day');
+    getTouchableDayStyle = (customStyle, isWeekend, isSelected, isToday, event) => {
+        const dayStyle = [ styles.dayCircleFiller, customStyle.dayCircleFiller ];
 
-    return <div className={ getComponentNameChain(Day, { isDisabled: props.isOldDay }) } >
-        { getDayEvent }
-        <div className={ getElementNameChain(Day, 'day') } onClick={ props.onDayClick.bind(null, props.day) }>
-            <div className={ getElementNameChain(Day, 'today', { isCurrentDate: isCurrentDate })}></div>
-            <div className={ getElementNameChain(Day, 'numberDay', { isCurrentDate: isCurrentDate }) }>
-                { props.day.format('D') }
-            </div>
-            <div className={ getElementNameChain(Day, 'overlay', { isOldDay: props.isOldDay })}></div>
-        </div>
-    </div>
-};
+        if (isSelected) {
+            if (isToday) {
+                dayStyle.push(styles.currentDayCircle, customStyle.currentDayCircle);
+            } else {
+                dayStyle.push(styles.selectedDayCircle, customStyle.selectedDayCircle);
+            }
+        }
 
-Day.displayName = 'Day';
-Day.ancestor = BaseComponent;
+        if (event) {
+            if (isSelected) {
+                dayStyle.push(styles.hasEventDaySelectedCircle, customStyle.hasEventDaySelectedCircle, event.hasEventDaySelectedCircle);
+            } else {
+                dayStyle.push(styles.hasEventCircle, customStyle.hasEventCircle, event.hasEventCircle);
+            }
+        }
+        return dayStyle;
+    };
+
+    getDayLabelStyle = (customStyle, isWeekend, isSelected, isToday, event) => {
+        const dayLabelStyle = [ styles.day, customStyle.day ];
+
+        if (isToday && !isSelected) {
+            dayLabelStyle.push(styles.currentDayText, customStyle.currentDayText);
+        } else if (isToday || isSelected) {
+            dayLabelStyle.push(styles.selectedDayText, customStyle.selectedDayText);
+        } else if (isWeekend) {
+            dayLabelStyle.push(styles.weekendDayText, customStyle.weekendDayText);
+        }
+
+        if (event) {
+            dayLabelStyle.push(styles.hasEventText, customStyle.hasEventText, event.hasEventText)
+        }
+        return dayLabelStyle;
+    };
+
+    render() {
+        const {
+            caption,
+            customStyle,
+            filler,
+            event,
+            isWeekend,
+            isSelected,
+            isToday,
+            showEventIndicators,
+        } = this.props;
+
+        return filler
+            ? (
+                <TouchableWithoutFeedback>
+                    <View style={ [ styles.dayButtonFiller, customStyle.dayButtonFiller ] }>
+                        <Text style={ [ styles.day, customStyle.day ] } />
+                    </View>
+                </TouchableWithoutFeedback>
+            )
+            : (
+                <TouchableOpacity onPress={ this.props.onPress }>
+                    <View style={ [ styles.dayButton, customStyle.dayButton ] }>
+                        <View style={ this.getTouchableDayStyle(customStyle, isWeekend, isSelected, isToday, event) }>
+                            <Text style={ this.getDayLabelStyle(customStyle, isWeekend, isSelected, isToday, event) }>{ caption }</Text>
+                        </View>
+                        { showEventIndicators &&
+                            <View style={ [
+                                    styles.eventIndicatorFiller,
+                                    customStyle.eventIndicatorFiller,
+                                    event && styles.eventIndicator,
+                                    event && customStyle.eventIndicator,
+                                    event && event.eventIndicator
+                                ] }
+                            />
+                        }
+                    </View>
+                </TouchableOpacity>
+            );
+    }
+}
 
 Day.propTypes = {
-    day: React.PropTypes.object.isRequired,
-    currentDay: React.PropTypes.object,
-    colorDay: React.PropTypes.string,
-    isOldDay: React.PropTypes.bool,
-    onDayClick: React.PropTypes.func
+    caption: React.PropTypes.any,
+    customStyle: React.PropTypes.object,
+    filler: React.PropTypes.bool,
+    event: React.PropTypes.object,
+    isSelected: React.PropTypes.bool,
+    isToday: React.PropTypes.bool,
+    isWeekend: React.PropTypes.bool,
+    onPress: React.PropTypes.func,
+    showEventIndicators: React.PropTypes.bool
 };
 
 Day.defaultProps = {
-    currentDay: {},
-    colorDay: '',
-    isOldDay: false,
-    onDayClick: () => {}
+    customStyle: {}
 };
 
-export default Day;
 
+
+export default Day;
