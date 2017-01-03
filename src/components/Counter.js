@@ -12,6 +12,8 @@ import {
 import Tabs from 'react-native-tabs';
 import Calendar from '../../components/Calendar/Calendar.js';
 import Icon from '../../components/Icon/Icon.js';
+import TextLabel from '../../components/TextLabel/TextLabel.js';
+
 
 const customDayHeadings = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const customMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
@@ -59,6 +61,10 @@ class Counter extends Component {
               {/*onSwipeNext={() => console.log('Forward SWIPE')}  // eslint-disable-line no-console*/}
           {/*/>*/}
           <Icon name={'home'} />
+          <TextLabel label={'My name is Rich'} />
+          <TextLabel label={'My name is Rich'} type="bold" />
+          <TextLabel label={'My name is Rich'} type="lightness" />
+          <TextLabel label={'My name is Rich'} type="description" />
       </View>
     );
   }
