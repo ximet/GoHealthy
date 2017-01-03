@@ -13,6 +13,8 @@ import Tabs from 'react-native-tabs';
 import Calendar from '../../components/Calendar/Calendar.js';
 import Icon from '../../components/Icon/Icon.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
+import WeekListItem from '../../components/WeekListItem/WeekListItem.js';
+
 
 
 const customDayHeadings = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -65,6 +67,7 @@ class Counter extends Component {
           <TextLabel label={'My name is Rich'} type="bold" />
           <TextLabel label={'My name is Rich'} type="lightness" />
           <TextLabel label={'My name is Rich'} type="description" />
+          <WeekListItem label="Отолоринголог"/>
       </View>
     );
   }
