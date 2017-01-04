@@ -67,7 +67,12 @@ class Counter extends Component {
           <TextLabel label={'My name is Rich'} type="bold" />
           <TextLabel label={'My name is Rich'} type="lightness" />
           <TextLabel label={'My name is Rich'} type="description" />
-          <WeekListItem label="Отолоринголог"/>
+          <WeekListItem label="Отоларинголог"
+                        dateText={'8 Фев 2016'}
+                        timeText={'11:00 - 12:30'}
+                        centerText={'Нордин'}
+                        doctorText={'ЛОР'}
+          />
       </View>
     );
   }

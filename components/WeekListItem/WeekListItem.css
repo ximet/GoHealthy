@@ -1,0 +1,49 @@
+weekListItemComponent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+listItem {
+    display: flex;
+    flex: 1;
+    height: 120px;
+    margin: 20px;
+    position: relative;
+    border-left: 5px solid #4e92df;
+
+}
+
+headerListItem {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+
+headerLabel {
+    margin-top: 10px;
+    flex: 3;
+
+}
+headerIcons {
+    flex: 1;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+bodyListItem {
+    margin-top: 20px;
+}
+
+bodyListItemLine {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+bodyListContainer {
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+
+}

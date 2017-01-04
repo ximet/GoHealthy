@@ -1,18 +1,1 @@
-import { StyleSheet } from 'react-native';
-
-const styles = StyleSheet.create({
-    weekListItemComponent: {
-        flexDirection: 'row',
-        margin: 10,
-        borderLeftWidth: 6,
-        borderLeftColor: '#4e92df'
-    },
-    listItem: {
-        flex: 1
-    },
-    header: {
-        height: 30
-    }
-});
-
-export default styles;
+module.exports = require('react-native').StyleSheet.create({"weekListItemComponent":{"flexDirection":"row","alignItems":"center"},"listItem":{"flex":1,"height":120,"margin":20,"position":"relative","borderLeftWidth":5,"borderLeftColor":"#4e92df"},"headerListItem":{"flexDirection":"row","height":40},"headerLabel":{"marginTop":10,"flex":3},"headerIcons":{"flex":1,"flexDirection":"row","marginTop":10},"bodyListItem":{"marginTop":20},"bodyListItemLine":{"flexDirection":"row","marginLeft":20},"bodyListContainer":{"flexDirection":"row","width":150}});
