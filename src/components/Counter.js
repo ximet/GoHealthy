@@ -14,6 +14,7 @@ import Calendar from '../../components/Calendar/Calendar.js';
 import Icon from '../../components/Icon/Icon.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import WeekListItem from '../../components/WeekListItem/WeekListItem.js';
+import WeekList from '../../components/WeekList/WeekList.js';
 
 
 
@@ -21,8 +22,30 @@ const customDayHeadings = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const customMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
     'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+const items = [
+    {   label: "Отоларинголог",
+        dateText: '8 Фев 2016',
+        timeText: '11:00 - 12:30',
+        centerText:'Нордин',
+        doctorText: 'ЛОР'
+    },
+    {   label: "Отоларинголог",
+        dateText: '8 Фев 2016',
+        timeText: '11:00 - 12:30',
+        centerText:'Нордин',
+        doctorText: 'ЛОР'
+    },
+    {   label: "Отоларинголог",
+        dateText: '8 Фев 2016',
+        timeText: '11:00 - 12:30',
+        centerText:'Нордин',
+        doctorText: 'ЛОР'
+    }
+];
+
 
 class Counter extends Component {
+
   render() {
     return (
       <View>
@@ -62,17 +85,19 @@ class Counter extends Component {
               {/*onSwipePrev={() => console.log('Back SWIPE')}     // eslint-disable-line no-console*/}
               {/*onSwipeNext={() => console.log('Forward SWIPE')}  // eslint-disable-line no-console*/}
           {/*/>*/}
+
           <Icon name={'home'} />
           <TextLabel label={'My name is Rich'} />
           <TextLabel label={'My name is Rich'} type="bold" />
           <TextLabel label={'My name is Rich'} type="lightness" />
           <TextLabel label={'My name is Rich'} type="description" />
-          <WeekListItem label="Отоларинголог"
-                        dateText={'8 Фев 2016'}
-                        timeText={'11:00 - 12:30'}
-                        centerText={'Нордин'}
-                        doctorText={'ЛОР'}
-          />
+          {/*<WeekListItem label="Отоларинголог"*/}
+                        {/*dateText={'8 Фев 2016'}*/}
+                        {/*timeText={'11:00 - 12:30'}*/}
+                        {/*centerText={'Нордин'}*/}
+                        {/*doctorText={'ЛОР'}*/}
+          {/*/>*/}
+          <WeekList items={items} />
       </View>
     );
   }
