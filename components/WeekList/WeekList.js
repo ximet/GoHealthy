@@ -2,8 +2,6 @@ import React from 'react';
 import { View, ListView, Text } from 'react-native';
 import WeekListItem from '../WeekListItem/WeekListItem.js';
 
-import styles from './WeekListStyles.js';
-
 const WeekList = (props) => {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     const dataSource = ds.cloneWithRows(props.items);
