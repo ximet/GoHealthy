@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import App from './src/containers/App.js';
+import { AppView } from './src/views/AppView.js';
 import configureStore from './src/store/configureStore.js';
 
 const store = configureStore();
@@ -10,7 +10,7 @@ class GoHealthy extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <App />
+                <AppView />
             </Provider>
         );
     }
