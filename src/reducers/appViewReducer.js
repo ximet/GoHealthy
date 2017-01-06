@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 import { SET_ACTIVE_VIEW_TYPE } from '../actions/appViewActions.js'
 
-export function appViewReducer (state = {}, action) {
+export default function appViewReducer (state = {}, action) {
     switch (action.type) {
         case SET_ACTIVE_VIEW_TYPE: {
             const { activeViewName } = action.payload;
