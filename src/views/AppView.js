@@ -9,11 +9,14 @@ import TextLabel from '../../components/TextLabel/TextLabel.js';
 
 export const AppView = connect(appViewSelector, appViewActions)((props) => {
     const ActiveView = views[props.activeViewName];
+    console.log(ActiveView);
+
 
     return <View>
-        {/*ActiveView*/}
-         {/*? <TextLabel label={'All cool'} />*/}
-         {/*: <TextLabel label={'Some Problem'} />*/}
-        <TextLabel label={'Render Smth'} />
+        {
+            ActiveView
+                ? <ActiveView/>
+                : <TextLabel label={'Error 404: Some problem'}/>
+        }
     </View>
 });

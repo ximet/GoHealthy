@@ -1,3 +1,3 @@
 export { AppView } from './AppView.js';
 
-// export { MonthView } from './MonthView.js';
+export { MonthView } from './MonthView.js';

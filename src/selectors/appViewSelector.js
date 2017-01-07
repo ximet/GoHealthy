@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect';
 
-const getActiveView = state => state;
+const getHistoryStack = state => state.appViewReducer;
+
+const getActiveView = (state) => {
+    return getHistoryStack(state).first();
+};
 
 export const appViewSelector = createSelector(
     [
@@ -8,7 +12,7 @@ export const appViewSelector = createSelector(
     ],
     ( activeView ) => {
         return {
-            activeViewName: activeView
+            activeViewName: activeView.viewName
         };
     }
 );
