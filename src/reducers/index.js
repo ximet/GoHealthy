@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
 import appViewReducer from './appViewReducer.js'
+import monthViewReducer from './monthViewReducer.js'
 
 const rootReducer = combineReducers({
-    counter,
-    appViewReducer
+    appViewReducer,
+    monthViewReducer
 });
 
 export default rootReducer;

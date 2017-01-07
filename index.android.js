@@ -1,25 +1,22 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import App from './src/main.js';
-import configureStore from './src/store/configureStore';
+import { AppView } from './src/views/AppView.js';
+import configureStore from './src/store/configureStore.js';
+import { appViewActions, SET_ACTIVE_VIEW_TYPE } from './src/actions/appViewActions.js';
 
 const store = configureStore();
 
-class GoHealthy extends Component {
+class GoHealthy extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <App />
+                <AppView />
             </Provider>
         );
     }
 }
 
 AppRegistry.registerComponent('GoHealthy', () => GoHealthy);
+store.dispatch(appViewActions[ SET_ACTIVE_VIEW_TYPE ]('MonthView'));
+
