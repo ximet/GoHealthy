@@ -3,7 +3,7 @@ import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { AppView } from './src/views/AppView.js';
 import configureStore from './src/store/configureStore.js';
-import { appViewActions, SET_ACTIVE_VIEW_TYPE } from './src/actions/appViewActions.js';
+import { appViewActions, SET_ACTIVE_VIEW } from './src/actions/appViewActions.js';
 
 const store = configureStore();
 
@@ -18,5 +18,5 @@ class GoHealthy extends React.Component {
 }
 
 AppRegistry.registerComponent('GoHealthy', () => GoHealthy);
-store.dispatch(appViewActions[ SET_ACTIVE_VIEW_TYPE ]('MonthView'));
+store.dispatch(appViewActions[ SET_ACTIVE_VIEW ]('MonthView'));
 

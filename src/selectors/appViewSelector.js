@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const getHistoryStack = state => state.appViewReducer;
+const getHistoryStack = state => state.appViewReducer.get('history');
 
 const getActiveView = (state) => {
     return getHistoryStack(state).first();

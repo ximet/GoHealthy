@@ -1,10 +1,12 @@
-export const SET_ACTIVE_VIEW_TYPE = `APP_VIEW_SET_ACTIVE_VIEW`;
+export const SET_ACTIVE_VIEW = `APP_VIEW_SET_ACTIVE_VIEW`;
 
 export const appViewActions = {
-    [ SET_ACTIVE_VIEW_TYPE ]: (viewName) => ({
-        type: SET_ACTIVE_VIEW_TYPE,
+    [ SET_ACTIVE_VIEW ]: (viewName, isGoToBack = true, isClearHistory = false) => ({
+        type: SET_ACTIVE_VIEW,
         payload: {
-            activeViewName: viewName
+            activeViewName: viewName,
+            isGoToBack,
+            isClearHistory
         }
     })
 };
