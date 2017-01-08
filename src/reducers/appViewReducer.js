@@ -34,5 +34,26 @@ export default function appViewReducer (state = initialState, action) {
 }
 
 const getCurrentHistory = (history) => {
-    return null; // mock
+    let currentHistory = null;
+    const lastViewName = history.first().viewName;
+    const newHistory = history.pop();
+
+    if (newHistory.size === 0) {
+        currentHistory = newHistory;
+    }
+    else {
+        const newItem = newHistory.first();
+        const newViewName = newItem.viewName;
+        const newIsGoToBack = newItem.isGoToBack;
+
+        if (newIsGoToBack && (lastViewName !== newViewName)) {
+            currentHistory = newHistory;
+        }
+        else
+        {
+            currentHistory = getCurrentHistory(newHistory);
+        }
+    }
+
+    return currentHistory;
 };
