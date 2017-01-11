@@ -9,7 +9,7 @@
     "bundle": "(cd android/ && ./gradlew assembleRelease)",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --sourcemap-output android/app/src/main/assets/index.android.map --assets-dest android/app/src/main/res/",
-    "adv-reverse": "adb reverse tcp:8081 tcp:8081" /* Need for reload server and fix problem with BatchedBridge */
+    "adv-reverse": "adb reverse tcp:8081 tcp:8081"
 
   },
   "dependencies": {
