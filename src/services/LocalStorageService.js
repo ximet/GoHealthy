@@ -1,5 +1,20 @@
 import { AsyncStorage } from 'react-native';
 
+const multiSet = (keys, values) => {
+    return new Promise((resolve, reject) => {
+        if (keys.length === 0 || values.length === 0 || keys.length !== values.length) {
+            reject('Problem with param')
+        }
+
+        for (let i = 0; i < keys.length; i++){
+            AsyncStorage.setItem(keys[i], JSON.stringify(values[i]))
+                .then(() => console.log(`Set data with key ${keys[i]} to LocalStorage`));
+        }
+
+        resolve('all item from array good setting');
+    })
+};
+
 export const LocaleStorage = {
     set (key, data) {
         AsyncStorage.setItem(key, JSON.stringify(data))
@@ -7,10 +22,8 @@ export const LocaleStorage = {
     },
 
     setArray (keyArray, dataArray) {
-        for(let i = 0; i < keyArray.length; i++){
-            AsyncStorage.setItem(keyArray[i], JSON.stringify(dataArray[i]))
-                .then(() => console.log(`Set data with key ${keyArray[i]} to LocalStorage`));
-        }
+        multiSet(keyArraym, dataArray)
+            .then(result => console.log(result));
     },
 
     get (key) {
