@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'center',
         fontSize: 15,
-        margin: 10
+        margin: 1
     },
     calendarHeading: {
         flexDirection: 'row'
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 12,
         textAlign: 'center',
-        marginVertical: 5
+        marginVertical: 3
     },
     weekendHeading: {
         flex: 1,
         fontSize: 12,
         textAlign: 'center',
-        marginVertical: 5,
+        marginVertical: 3,
     },
     weekRow: {
         flexDirection: 'row'
