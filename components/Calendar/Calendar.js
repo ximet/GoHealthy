@@ -250,25 +250,23 @@ Calendar.propTypes = {
     showEventIndicators: React.PropTypes.bool,
     startDate: React.PropTypes.any,
     titleFormat: React.PropTypes.string,
-    today: React.PropTypes.any,
+    today: React.PropTypes.any.isRequired,
     weekStart: React.PropTypes.number
 };
 
 Calendar.defaultProps = {
     customStyle: {},
     width: DEVICE_WIDTH,
-    dayHeadings: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    dayHeadings: [],
     eventDates: [],
-    monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    monthNames: [],
     nextButtonText: 'Next',
     prevButtonText: 'Prev',
     scrollEnabled: false,
     showControls: false,
     showEventIndicators: false,
     startDate: moment().format('YYYY-MM-DD'),
-    titleFormat: 'MMMM YYYY',
-    today: moment(),
+    titleFormat: '',
     weekStart: 1
 };
 
