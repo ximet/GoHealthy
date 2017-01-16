@@ -231,19 +231,11 @@ Calendar.propTypes = {
     dayHeadings: React.PropTypes.array,
     eventDates: React.PropTypes.array,
     monthNames: React.PropTypes.array,
-    nextButtonText: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
-    ]),
     onDateSelect: React.PropTypes.func,
     onSwipeNext: React.PropTypes.func,
     onSwipePrev: React.PropTypes.func,
     onTouchNext: React.PropTypes.func,
     onTouchPrev: React.PropTypes.func,
-    prevButtonText: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
-    ]),
     scrollEnabled: React.PropTypes.bool,
     selectedDate: React.PropTypes.any,
     showControls: React.PropTypes.bool,
@@ -260,8 +252,6 @@ Calendar.defaultProps = {
     dayHeadings: [],
     eventDates: [],
     monthNames: [],
-    nextButtonText: 'Next',
-    prevButtonText: 'Prev',
     scrollEnabled: false,
     showControls: false,
     showEventIndicators: false,

@@ -40,8 +40,6 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                     showControls
                     monthNames={ monthNames }
                     titleFormat={ getTitleCalendarFormat() }
-                    prevButtonText={'Prev'}
-                    nextButtonText={'Next'}
                     dayHeadings = { dayNames }
                     today={ getCurrentDate() }
                     onDateSelect={(date) => console.log('Date selected:', date)}
