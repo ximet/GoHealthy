@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { monthViewSelector } from '../selectors/monthViewSelector.js';
-import { monthViewActions } from '../actions/monthViewActions.js';
+import { monthViewActions, ADD_ITEM } from '../actions/monthViewActions.js';
 import { getTitleCalendarFormat, getCurrentDate, monthNames, dayNames } from '../services/DateService.js';
 
 import Calendar from '../../components/Calendar/Calendar.js';
@@ -30,9 +30,14 @@ const getFooter = (actionForButton) => {
     return (<Button label={'Текущий месяц'} onPressButton={actionForButton} />)
 };
 
+const getHeader = (actionForButton) => {
+    return (<Button label={'добавить'} onPressButton={actionForButton} />)
+};
+
 export const MonthView = connect(monthViewSelector, monthViewActions)((props) => {
 
     return <View>
+                {getHeader(props[ADD_ITEM])}
                 <Calendar
                     eventDates={['2016-07-03', '2016-07-05', '2016-07-28', '2016-07-30']}
                     events={[{date: '2016-07-04', hasEventCircle: {backgroundColor: 'powderblue'}}]}
