@@ -10,16 +10,6 @@ import TextLabel from '../../components/TextLabel/TextLabel.js';
 import WeekList from '../../components/WeekList/WeekList.js';
 import Button from '../../components/Button/Button.js';
 
-
-const items = [
-    {   label: "Отоларинголог",
-        dateText: '8 Фев 2016',
-        timeText: '11:00 - 12:30',
-        centerText:'Нордин',
-        doctorText: 'ЛОР'
-    }
-];
-
 const getList = (items) => {
     return items.length > 0
         ? (<WeekList items={items}/>)
@@ -37,6 +27,7 @@ const getHeader = (actionForButton) => {
 export const MonthView = connect(monthViewSelector, monthViewActions)((props) => {
 
     return <View>
+                <TextLabel label={'Тут будет хэдер.'} />
                 {getHeader(props[ADD_ITEM])}
                 <Calendar
                     eventDates={['2016-07-03', '2016-07-05', '2016-07-28', '2016-07-30']}
@@ -54,7 +45,7 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                     onSwipeNext={() => console.log('Forward SWIPE')}  // eslint-disable-line no-console
                 />
 
-                {getList(items)}
+                {getList(props.items)}
                 {getFooter(() => {})}
         </View>
 });

@@ -9,12 +9,6 @@ export default function monthViewReducer (state = Immutable.List(), action) {
             return state.push(item);
         }
 
-        case GET_LIST_DATA_TO_CURRENT_MONTH: {
-            const { data } = action.payload;
-
-            return new Immutable.List(data);
-        }
-
         default: {
             return state;
         }

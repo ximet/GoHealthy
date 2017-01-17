@@ -1,14 +1,16 @@
 import { createSelector } from 'reselect';
 
-const getSmth = state => state.monthView;
+const getCurrentMonthViewState = state => state.monthView;
 
 export const monthViewSelector = createSelector(
     [
-        getSmth
+        getCurrentMonthViewState
     ],
-    ( smth ) => {
+    ( monthItems ) => {
+        const items = monthItems;
+
         return {
-            activeViewName: smth
+            items: []
         };
     }
 );
