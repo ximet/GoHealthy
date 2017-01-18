@@ -17,9 +17,10 @@ export const crudActions = {
         }
     }),
 
-    [ EDIT_ELEMENT ]: (element) => ({
+    [ EDIT_ELEMENT ]: (elementId, element) => ({
         type: EDIT_ELEMENT,
         values: {
+            id: elementId,
             element: element
         }
     })
