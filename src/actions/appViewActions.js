@@ -6,7 +6,7 @@ export const GO_TO_BACK = `${prefixActions}GO_TO_BACK`;
 export const appViewActions = {
     [ SET_ACTIVE_VIEW ]: (viewName, isGoToBack = true, isClearHistory = false) => ({
         type: SET_ACTIVE_VIEW,
-        payload: {
+        values: {
             activeViewName: viewName,
             isGoToBack,
             isClearHistory

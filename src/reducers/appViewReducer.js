@@ -5,7 +5,7 @@ import { initialState } from '../initials/appViewInitialState.js';
 export default function appViewReducer (state = initialState, action) {
     switch (action.type) {
         case SET_ACTIVE_VIEW: {
-            const { activeViewName, isGoToBack, isClearHistory } = action.payload;
+            const { activeViewName, isGoToBack, isClearHistory } = action.values;
 
             return state.update('history', (history) => {
                 const stack = isClearHistory ? new Immutable.Stack() : history;

@@ -13,7 +13,7 @@ const item =
 export const monthViewActions = {
     [ ADD_ITEM ]: (data) => ({
         type: ADD_ITEM,
-        payload: {
+        values: {
             item: item
         }
     })

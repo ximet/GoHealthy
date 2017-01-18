@@ -3,24 +3,24 @@ export const DELETE_ELEMENT = `CRUD_ACTIONS_DELETE_ELEMENT`;
 export const EDIT_ELEMENT = `CRUD_ACTIONS_EDIT_ELEMENT`;
 
 export const crudActions = {
-    [ ADD_ELEMENT ]: (data) => ({
+    [ ADD_ELEMENT ]: (element) => ({
         type: ADD_ELEMENT,
-        payload: {
-            item: data
+        values: {
+            element: element
         }
     }),
 
-    [ DELETE_ELEMENT ]: (data) => ({
+    [ DELETE_ELEMENT ]: (elementId) => ({
         type: DELETE_ELEMENT,
-        payload: {
-            item: data
+        values: {
+            id: elementId
         }
     }),
 
-    [ EDIT_ELEMENT ]: (data) => ({
+    [ EDIT_ELEMENT ]: (element) => ({
         type: EDIT_ELEMENT,
-        payload: {
-            item: data
+        values: {
+            element: element
         }
     })
 };

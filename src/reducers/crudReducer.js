@@ -4,19 +4,19 @@ import { ADD_ELEMENT, DELETE_ELEMENT, EDIT_ELEMENT } from '../actions/globalActi
 export default function crudReducer (state = Immutable.List(), action) {
     switch (action.type) {
         case ADD_ELEMENT: {
-            const { item } = action.payload;
+            const { element } = action.values;
 
             return null;
         }
 
         case DELETE_ELEMENT: {
-            const { item } = action.payload;
+            const { id } = action.values;
 
             return null;
         }
 
         case EDIT_ELEMENT: {
-            const { item } = action.payload;
+            const { element } = action.values;
 
             return null;
         }
