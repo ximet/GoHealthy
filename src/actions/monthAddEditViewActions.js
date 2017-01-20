@@ -15,12 +15,6 @@ const item =
     }; //TODO delete mock-object
 
 export const monthAddEditViewActions = {
-    [ SAVE_ITEM ]: (data) => ({
-        type: ADD_ITEM,
-        values: {
-            item: item
-        }
-    }),
 
     [ SAVE_ITEM ]: () =>
         (dispatch, getState) => {

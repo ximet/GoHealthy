@@ -9,5 +9,9 @@ export const monthViewActions = {
     [ ADD_ITEM ]: () =>
         (dispatch, getState) => {
             dispatch(monthAddEditViewActions[SAVE_ITEM]());
-    }
+    },
+
+    [ GET_LIST_DATA_TO_CURRENT_MONTH ]: () => ({
+        type: GET_LIST_DATA_TO_CURRENT_MONTH
+    }),
 };
