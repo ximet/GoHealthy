@@ -1,4 +1,4 @@
-import uuid from 'node-uuid';
+const uuidV4 = require('uuid/v4');
 import { ADD_ELEMENT, crudActions } from './globalActions/crudActions.js';
 import { GO_TO_BACK, appViewActions } from './appViewActions.js';
 
@@ -20,7 +20,7 @@ export const monthAddEditViewActions = {
         (dispatch, getState) => {
 
             dispatch(crudActions[ADD_ELEMENT]({
-                id: uuid.v4(),
+                id: uuidV4(),
                 type: 'MonthElement',
                 item: item
             }));
