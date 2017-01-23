@@ -13,11 +13,11 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
 
     return <View>
         <TextLabel label={'Тут будет хэдер.'} />
-        <Input />
-        <Input label="Enter Label" onChange={() => {}}/>
-        <Input label="center Text" onChange={() => {}}/>
 
-        <Input label="doctor Text" onChange={() => {}}/>
+        <Input label="Enter Label" onChange={(value) => {return value}}/>
+        <Input label="center Text" onChange={(value) => {return value}}/>
+
+        <Input label="doctor Text" onChange={(value) => {return value}}/>
 
     </View>
 });

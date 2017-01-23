@@ -1,0 +1,20 @@
+inputComponent {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #bebebe;
+}
+
+inputLabel {
+    flex: 1;
+    font-size: 14px;
+    color: #39393a;
+}
+
+inputValue {
+    display: flex;
+    flex: 3;
+    font-size: 17px;
+    color: #000000;
+}

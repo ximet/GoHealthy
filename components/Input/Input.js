@@ -6,13 +6,16 @@ import {
     View
 } from 'react-native';
 
+import styles from './InputStyles.js';
+
 const Input = (props) => {
     return (
-        <View>
-            <Text>
+        <View style={styles.inputComponent}>
+            <Text style={styles.inputLabel}>
                 { props.label }
             </Text>
             <TextInput
+                style={styles.inputValue}
                 placeholder={ props.placeholder }
                 maxLength={ props.maxLength }
                 onChange={ props.onChange }
@@ -39,7 +42,7 @@ Input.propTypes = {
 Input.defaultProps = {
     onPressButton: () => {},
     value: '',
-    placeholder: '',
+    placeholder: 'some place',
     autoCapitalize: 'off',
     onFocus: () => {},
     onBlur: () => {},
