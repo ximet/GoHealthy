@@ -1,6 +1,6 @@
 const uuidV4 = require('uuid/v4');
 import { ADD_ELEMENT, crudActions } from './globalActions/crudActions.js';
-import { GO_TO_BACK, appViewActions } from './appViewActions.js';
+import { SET_ACTIVE_VIEW, appViewActions } from './appViewActions.js';
 
 
 export const SAVE_ITEM = `MONTH_ADD_EDIT_VIEW_SAVE_ITEM`;
@@ -25,6 +25,6 @@ export const monthAddEditViewActions = {
                 item: item
             }));
 
-            dispatch(appViewActions[ GO_TO_BACK ]());
+            dispatch(appViewActions[ SET_ACTIVE_VIEW ]('MonthView'));
     },
 };

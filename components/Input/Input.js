@@ -30,7 +30,7 @@ Input.propTypes = {
     placeholder: React.PropTypes.string,
     maxLength: React.PropTypes.number,
     label: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func,
+    onChange: React.PropTypes.func.isRequired,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func,
     autoFocus: React.PropTypes.bool
@@ -41,7 +41,6 @@ Input.defaultProps = {
     value: '',
     placeholder: '',
     autoCapitalize: 'off',
-    onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
     autoFocus: false
