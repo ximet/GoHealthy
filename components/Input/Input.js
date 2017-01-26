@@ -18,7 +18,7 @@ const Input = (props) => {
                 style={styles.inputValue}
                 placeholder={ props.placeholder }
                 maxLength={ props.maxLength }
-                onChange={ props.onChange }
+                onChangeText={ props.onChange }
                 onFocus={ () => {} }
                 onBlur={ () => {} }
                 value={ props.value }

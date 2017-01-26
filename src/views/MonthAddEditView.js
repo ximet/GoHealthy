@@ -18,14 +18,14 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
 
         <Input label="Enter Label"
                onChange={ (text) => { props[CHANGE_LABEL](text)} }
-               value={props.labelValue} />
+               value={ props.label } />
         <Input label="center Text"
                onChange={ (text) => { props[CHANGE_PLACE](text)} }
-               value={props.centerValue} />
+               value={ props.place } />
 
         <Input label="doctor Text"
                onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
-               value={props.fullNameValue} />
+               value={ props.fullName } />
 
         <Button
             label={ 'Сохранить' }

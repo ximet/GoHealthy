@@ -1,10 +1,6 @@
 import { createSelector } from 'reselect';
 
-export const getLabel = (state) => {
-    const lab = state;
-
-    state['monthAddEditViewReducer'].getIn([ 'label' ]);
-};
+export const getLabel = (state) => state['monthAddEditViewReducer'].getIn([ 'label' ]);
 export const getPlace = (state) => state['monthAddEditViewReducer'].getIn([ 'place' ]);
 export const getFullName = (state) => state['monthAddEditViewReducer'].getIn([ 'fullName' ]);
 
