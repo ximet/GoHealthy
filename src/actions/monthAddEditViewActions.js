@@ -4,6 +4,9 @@ import { SET_ACTIVE_VIEW, appViewActions } from './appViewActions.js';
 
 
 export const SAVE_ITEM = `MONTH_ADD_EDIT_VIEW_SAVE_ITEM`;
+export const CHANGE_LABEL = `MONTH_ADD_EDIT_VIEW_CHANGE_LABEL`;
+export const CHANGE_PLACE = `MONTH_ADD_EDIT_VIEW_CHANGE_PLACE`;
+export const CHANGE_FULL_NAME = `MONTH_ADD_EDIT_VIEW_CHANGE_FULL_NAME`;
 
 
 const item =
@@ -15,6 +18,26 @@ const item =
     }; //TODO delete mock-object
 
 export const monthAddEditViewActions = {
+    [ CHANGE_LABEL ]: (value) => ({
+        type: CHANGE_LABEL,
+        values: {
+            value
+        }
+    }),
+
+    [ CHANGE_PLACE ]: (value) => ({
+        type: CHANGE_PLACE,
+        values: {
+            value
+        }
+    }),
+
+    [ CHANGE_FULL_NAME ]: (value) => ({
+        type: CHANGE_FULL_NAME,
+        values: {
+            value
+        }
+    }),
 
     [ SAVE_ITEM ]: () =>
         (dispatch, getState) => {
