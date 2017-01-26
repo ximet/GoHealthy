@@ -46,10 +46,10 @@ export const monthAddEditViewActions = {
 
             dispatch(crudActions[ADD_ELEMENT]({
                 id: uuidV4(),
-                type: 'MonthElement',
+                type: 'MonthViewElement',
                 label: getLabel(state),
-                place: getPlace(state),
-                fullName: getFullName(state),
+                centerText: getPlace(state),
+                doctorText: getFullName(state),
                 dateText: '8 Фев 2016',
                 timeText: '11:00 - 12:30'
             }));

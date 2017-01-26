@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
+import { getFullFutureState } from './crudSelector.js';
 
-const getCurrentMonthViewState = state => state.monthView;
+const getCurrentMonthViewState = state => getFullFutureState(state, 'MonthViewElement');
+
 
 export const monthViewSelector = createSelector(
     [
@@ -10,7 +12,7 @@ export const monthViewSelector = createSelector(
         const items = monthItems;
 
         return {
-            items: []
+            items
         };
     }
 );
