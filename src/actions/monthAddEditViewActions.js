@@ -1,6 +1,7 @@
 const uuidV4 = require('uuid/v4');
 import { ADD_ELEMENT, crudActions } from './globalActions/crudActions.js';
 import { SET_ACTIVE_VIEW, appViewActions } from './appViewActions.js';
+import { getLabel, getPlace, getFullName } from '../selectors/monthAddEditViewSelector.js';
 
 
 export const SAVE_ITEM = `MONTH_ADD_EDIT_VIEW_SAVE_ITEM`;
@@ -41,11 +42,16 @@ export const monthAddEditViewActions = {
 
     [ SAVE_ITEM ]: () =>
         (dispatch, getState) => {
+            const state = getState();
 
             dispatch(crudActions[ADD_ELEMENT]({
                 id: uuidV4(),
                 type: 'MonthElement',
-                item: item
+                label: getLabel(state),
+                place: getPlace(state),
+                fullName: getFullName(state),
+                dateText: '8 Фев 2016',
+                timeText: '11:00 - 12:30'
             }));
 
             dispatch(appViewActions[ SET_ACTIVE_VIEW ]('MonthView'));
