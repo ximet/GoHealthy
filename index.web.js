@@ -7,6 +7,7 @@ import configureStore from './src/store/configureStore.js';
 import { appViewActions, SET_ACTIVE_VIEW } from './src/actions/appViewActions.js';
 
 const store = configureStore();
+store.dispatch(appViewActions[ SET_ACTIVE_VIEW ]('MonthView'));
 
 class GoHealthy extends React.Component {
     render() {
@@ -19,9 +20,5 @@ class GoHealthy extends React.Component {
 }
 
 ReactNative.render(<GoHealthy />, document.getElementById('Container'));
-
-
-
-store.dispatch(appViewActions[ SET_ACTIVE_VIEW ]('MonthView'));
 
 
