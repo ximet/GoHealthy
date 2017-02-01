@@ -1,4 +1,4 @@
-import { CHANGE_LABEL, CHANGE_PLACE, CHANGE_FULL_NAME } from '../actions/monthAddEditViewActions.js';
+import { CHANGE_LABEL, CHANGE_PLACE, CHANGE_FULL_NAME, CHANGE_DATE } from '../actions/monthAddEditViewActions.js';
 import { initialState } from '../initials/monthAddEditViewInitials.js';
 
 
@@ -15,6 +15,10 @@ export default function monthViewReducer (state = initialState, action) {
 
         case CHANGE_FULL_NAME: {
             return state.set('fullName', action.values.value)
+        }
+
+        case CHANGE_DATE: {
+            return state.set('date', action.values.value)
         }
 
         default: {

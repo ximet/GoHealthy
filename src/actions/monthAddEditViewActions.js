@@ -1,12 +1,14 @@
 const uuidV4 = require('uuid/v4');
 import { ADD_ELEMENT, crudActions } from './globalActions/crudActions.js';
 import { SET_ACTIVE_VIEW, appViewActions } from './appViewActions.js';
-import { getLabel, getPlace, getFullName } from '../selectors/monthAddEditViewSelector.js';
+import { getLabel, getPlace, getFullName, getDate } from '../selectors/monthAddEditViewSelector.js';
 
 
 export const SAVE_ITEM = `MONTH_ADD_EDIT_VIEW_SAVE_ITEM`;
 export const CHANGE_LABEL = `MONTH_ADD_EDIT_VIEW_CHANGE_LABEL`;
 export const CHANGE_PLACE = `MONTH_ADD_EDIT_VIEW_CHANGE_PLACE`;
+export const CHANGE_DATE = `MONTH_ADD_EDIT_VIEW_CHANGE_DATE`;
+
 export const CHANGE_FULL_NAME = `MONTH_ADD_EDIT_VIEW_CHANGE_FULL_NAME`;
 
 
@@ -40,6 +42,13 @@ export const monthAddEditViewActions = {
         }
     }),
 
+    [ CHANGE_DATE ]: (value) => ({
+        type: CHANGE_DATE,
+        values: {
+            value
+        }
+    }),
+
     [ SAVE_ITEM ]: () =>
         (dispatch, getState) => {
             const state = getState();
@@ -50,7 +59,7 @@ export const monthAddEditViewActions = {
                 label: getLabel(state),
                 centerText: getPlace(state),
                 doctorText: getFullName(state),
-                dateText: '8 Фев 2016',
+                dateText: getDate(state),
                 timeText: '11:00 - 12:30'
             }));
 
