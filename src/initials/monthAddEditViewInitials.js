@@ -4,5 +4,11 @@ export const initialState = new Immutable.Map({
     label: '',
     place: '',
     fullName: '',
-    date: ''
+    date: '',
+    timeFrom: '',
+    timeTo: '',
+    category: '',
+    description: '',
+    group: '',
+    acceptVisit: false
 });
