@@ -68,14 +68,6 @@ class DatePicker extends React.Component {
         }
     }
 
-    onStartShouldSetResponder(e) {
-        return true;
-    }
-
-    onMoveShouldSetResponder(e) {
-        return true;
-    }
-
     onPressCancel() {
         this.setModalVisible(false);
 
