@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
     View,
     Text,
@@ -22,7 +22,7 @@ const FORMATS = {
 
 const SUPPORTED_ORIENTATIONS = ["portrait", "portrait-upside-down", "landscape", "landscape-left", "landscape-right"];
 
-class DatePicker extends Component {
+class DatePicker extends React.Component {
     constructor(props) {
         super(props);
 
@@ -40,10 +40,10 @@ class DatePicker extends Component {
         this.onTimePicked = this.onTimePicked.bind(this);
         this.onDatetimePicked = this.onDatetimePicked.bind(this);
         this.onDatetimeTimePicked = this.onDatetimeTimePicked.bind(this);
-        this.setModalVisible = this.setModalVisible.bind(this);
+        this.openIOSDatePicker = this.openIOSDatePicker.bind(this);
     }
 
-    setModalVisible(visible) {
+    openIOSDatePicker(visible) {
         const {height, duration} = this.props;
 
         if (visible) {
@@ -190,7 +190,43 @@ class DatePicker extends Component {
         }
     }
 
-    
+    openAndroidDatePicker(props) {
+        const { mode, format = FORMATS[mode], minDate, maxDate, is24Hour = !format.match(/h|a/) } = props;
+
+        switch (mode) {
+            case 'date': {
+                DatePickerAndroid.open({
+                    date: this.state.date,
+                    minDate: minDate && this.getDate(minDate),
+                    maxDate: maxDate && this.getDate(maxDate)
+                }).then(this.onDatePicked);
+
+                break;
+            }
+
+            case 'time': {
+                let timeMoment = moment(this.state.date);
+
+                TimePickerAndroid.open({
+                    hour: timeMoment.hour(),
+                    minute: timeMoment.minutes(),
+                    is24Hour: is24Hour
+                }).then(this.onTimePicked);
+
+                break;
+            }
+
+            case 'datetime': {
+                DatePickerAndroid.open({
+                    date: this.state.date,
+                    minDate: minDate && this.getDate(minDate),
+                    maxDate: maxDate && this.getDate(maxDate)
+                }).then(this.onDatetimePicked);
+
+                break;
+            }
+        }
+    }
 
     onPressDate() {
         if (this.props.disabled) {
@@ -202,34 +238,9 @@ class DatePicker extends Component {
         });
 
         if (Platform.OS === 'ios') {
-            this.setModalVisible(true);
+            this.openIOSDatePicker(true);
         } else {
-
-            const {mode, format = FORMATS[mode], minDate, maxDate, is24Hour = !format.match(/h|a/)} = this.props;
-
-            if (mode === 'date') {
-                DatePickerAndroid.open({
-                    date: this.state.date,
-                    minDate: minDate && this.getDate(minDate),
-                    maxDate: maxDate && this.getDate(maxDate)
-                }).then(this.onDatePicked);
-            } else if (mode === 'time') {
-
-                let timeMoment = moment(this.state.date);
-
-                TimePickerAndroid.open({
-                    hour: timeMoment.hour(),
-                    minute: timeMoment.minutes(),
-                    is24Hour: is24Hour
-                }).then(this.onTimePicked);
-            } else if (mode === 'datetime') {
-
-                DatePickerAndroid.open({
-                    date: this.state.date,
-                    minDate: minDate && this.getDate(minDate),
-                    maxDate: maxDate && this.getDate(maxDate)
-                }).then(this.onDatetimePicked);
-            }
+            this.openAndroidDatePicker(this.props);
         }
 
         if (typeof this.props.onOpenModal === 'function') {
