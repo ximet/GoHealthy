@@ -11,7 +11,7 @@ import {
     Platform,
     Animated
 } from 'react-native';
-import Style from './style';
+import Style from './DatePickerStyles.js';
 import moment from 'moment';
 
 const FORMATS = {
@@ -19,8 +19,6 @@ const FORMATS = {
     'datetime': 'YYYY-MM-DD HH:mm',
     'time': 'HH:mm'
 };
-
-const SUPPORTED_ORIENTATIONS = ["portrait", "portrait-upside-down", "landscape", "landscape-left", "landscape-right"];
 
 class DatePicker extends React.Component {
     constructor(props) {
@@ -40,10 +38,10 @@ class DatePicker extends React.Component {
         this.onTimePicked = this.onTimePicked.bind(this);
         this.onDatetimePicked = this.onDatetimePicked.bind(this);
         this.onDatetimeTimePicked = this.onDatetimeTimePicked.bind(this);
-        this.openIOSDatePicker = this.openIOSDatePicker.bind(this);
+        this.setModalVisible = this.setModalVisible.bind(this);
     }
 
-    openIOSDatePicker(visible) {
+    setModalVisible(visible) {
         const {height, duration} = this.props;
 
         if (visible) {
@@ -70,19 +68,11 @@ class DatePicker extends React.Component {
 
     onPressCancel() {
         this.setModalVisible(false);
-
-        if (typeof this.props.onCloseModal === 'function') {
-            this.props.onCloseModal();
-        }
     }
 
     onPressConfirm() {
         this.datePicked();
         this.setModalVisible(false);
-
-        if (typeof this.props.onCloseModal === 'function') {
-            this.props.onCloseModal();
-        }
     }
 
     getDate(date = this.props.date) {
@@ -182,9 +172,8 @@ class DatePicker extends React.Component {
         }
     }
 
-    openAndroidDatePicker(props) {
+    openAndroidPicker (props) {
         const { mode, format = FORMATS[mode], minDate, maxDate, is24Hour = !format.match(/h|a/) } = props;
-
         switch (mode) {
             case 'date': {
                 DatePickerAndroid.open({
@@ -195,7 +184,6 @@ class DatePicker extends React.Component {
 
                 break;
             }
-
             case 'time': {
                 let timeMoment = moment(this.state.date);
 
@@ -207,7 +195,6 @@ class DatePicker extends React.Component {
 
                 break;
             }
-
             case 'datetime': {
                 DatePickerAndroid.open({
                     date: this.state.date,
@@ -230,13 +217,10 @@ class DatePicker extends React.Component {
         });
 
         if (Platform.OS === 'ios') {
-            this.openIOSDatePicker(true);
-        } else {
-            this.openAndroidDatePicker(this.props);
+            this.setModalVisible(true);
         }
-
-        if (typeof this.props.onOpenModal === 'function') {
-            this.props.onOpenModal();
+        else {
+            this.openAndroidPicker(this.props);
         }
     }
 
@@ -246,8 +230,6 @@ class DatePicker extends React.Component {
             style,
             customStyles,
             disabled,
-            showIcon,
-            iconSource,
             minDate,
             maxDate,
             minuteInterval,
@@ -272,15 +254,11 @@ class DatePicker extends React.Component {
                     <View style={dateInputStyle}>
                         {this.getTitleElement()}
                     </View>
-                    {showIcon && <Image
-                        style={[Style.dateIcon, customStyles.dateIcon]}
-                        source={iconSource}
-                    />}
                     {Platform.OS === 'ios' && <Modal
                         transparent={true}
                         animationType="none"
                         visible={this.state.modalVisible}
-                        supportedOrientations={SUPPORTED_ORIENTATIONS}
+                        supportedOrientations={["portrait"]}
                         onRequestClose={() => {this.setModalVisible(false);}}
                     >
                         <View
@@ -338,19 +316,6 @@ class DatePicker extends React.Component {
     }
 }
 
-DatePicker.defaultProps = {
-    mode: 'date',
-    date: '',
-    height: 259,
-    duration: 300,
-    confirmBtnText: '确定',
-    cancelBtnText: '取消',
-    customStyles: {},
-    showIcon: true,
-    disabled: false,
-    placeholder: '',
-};
-
 DatePicker.propTypes = {
     mode: React.PropTypes.oneOf(['date', 'datetime', 'time']),
     date: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.instanceOf(Date)]),
@@ -361,15 +326,25 @@ DatePicker.propTypes = {
     duration: React.PropTypes.number,
     confirmBtnText: React.PropTypes.string,
     cancelBtnText: React.PropTypes.string,
-    iconSource: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.object]),
     customStyles: React.PropTypes.object,
-    showIcon: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
     onDateChange: React.PropTypes.func,
-    onOpenModal: React.PropTypes.func,
-    onCloseModal: React.PropTypes.func,
     placeholder: React.PropTypes.string,
+    modalOnResponderTerminationRequest: React.PropTypes.func,
     is24Hour: React.PropTypes.bool
+};
+
+DatePicker.defaultProps = {
+    mode: 'date',
+    date: '',
+    height: 259,
+
+    duration: 300,
+    confirmBtnText: 'Confirm',
+    cancelBtnText: 'Cancel',
+    customStyles: {},
+    disabled: false,
+    placeholder: '',
 };
 
 export default DatePicker;

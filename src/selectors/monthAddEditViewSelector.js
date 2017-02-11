@@ -18,7 +18,7 @@ export const monthAddEditViewSelector = createSelector(
         getFullName,
         getDate
     ],
-    ( label, place, fullName ) => {
+    ( label, place, fullName, date ) => {
         return {
             label,
             place,

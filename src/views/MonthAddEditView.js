@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { monthAddEditViewSelector } from '../selectors/monthAddEditViewSelector.js';
 import { monthAddEditViewActions, ADD_ITEM } from '../actions/monthAddEditViewActions.js';
 import { CHANGE_LABEL, CHANGE_PLACE, CHANGE_FULL_NAME, SAVE_ITEM } from '../actions/monthAddEditViewActions.js';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from '../../components/DatePicker/DatePicker.js';
 
 
 import Calendar from '../../components/Calendar/Calendar.js';
@@ -40,8 +40,6 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
             format="YYYY-MM-DD"
             minDate="2016-05-01"
             maxDate="2016-06-01"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
             customStyles={{
                 dateIcon: {
                     position: 'absolute',
