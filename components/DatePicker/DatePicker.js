@@ -68,11 +68,11 @@ class DatePicker extends React.Component {
         }
     }
 
-    onPressCancel() {
+    onPressCancel () {
         this.setModalIOSPickerVisible(false);
     }
 
-    onPressConfirm() {
+    onPressConfirm () {
         this.datePicked();
         this.setModalIOSPickerVisible(false);
     }
@@ -119,9 +119,7 @@ class DatePicker extends React.Component {
     }
 
     datePicked() {
-        if (typeof this.props.onDateChange === 'function') {
-            this.props.onDateChange(this.getDateStr(this.state.date), this.state.date);
-        }
+        this.props.onDateChange(this.getDateStr(this.state.date), this.state.date);
     }
 
     getTitleElement() {
@@ -209,7 +207,7 @@ class DatePicker extends React.Component {
         }
     }
 
-    onPressDate() {
+    onPressDate () {
         if (this.props.disabled) {
             return true;
         }
@@ -311,8 +309,11 @@ class DatePicker extends React.Component {
                 underlayColor={'transparent'}
                 onPress={this.onPressDate}
             >
-                <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
+                <View style={[Style.dateTouchBody]}>
                     <View style={dateInputStyle}>
+                        <Text style={Style.inputLabel}>
+                            { this.props.label }
+                        </Text>
                         {this.getTitleElement()}
                     </View>
                     {this.renderIOSPicker()}
@@ -337,7 +338,8 @@ DatePicker.propTypes = {
     onDateChange: React.PropTypes.func,
     placeholder: React.PropTypes.string,
     modalOnResponderTerminationRequest: React.PropTypes.func,
-    is24Hour: React.PropTypes.bool
+    is24Hour: React.PropTypes.bool,
+    label: React.PropTypes.string.isRequired
 };
 
 DatePicker.defaultProps = {

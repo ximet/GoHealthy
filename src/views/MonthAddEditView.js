@@ -28,11 +28,8 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
                onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
                value={ props.fullName } />
 
-        <Button
-            label={ 'Сохранить' }
-            onPressButton={ props[SAVE_ITEM] }
-        />
         <DatePicker
+            label = { 'Дата визита: ' }
             style={{width: 200}}
             date={custom.date}
             mode="date"
@@ -40,19 +37,12 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
             format="YYYY-MM-DD"
             minDate="2016-05-01"
             maxDate="2016-06-01"
-            customStyles={{
-                dateIcon: {
-                    position: 'absolute',
-                    left: 0,
-                    top: 4,
-                    marginLeft: 0
-                },
-                dateInput: {
-                    marginLeft: 36
-                }
-                // ... You can check the source to find the other keys.
-            }}
             onDateChange={(date) => console.log('MyDate:', date)}
+        />
+
+        <Button
+            label={ 'Сохранить' }
+            onPressButton={ props[SAVE_ITEM] }
         />
     </View>
 });
