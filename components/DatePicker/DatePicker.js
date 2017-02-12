@@ -78,13 +78,13 @@ class DatePicker extends React.Component {
         this.setModalIOSPickerVisible(false);
     }
 
-    getDate(date = this.props.date) {
-        const {mode, minDate, maxDate, format = FORMATS[mode]} = this.props;
+    getDate(date = this.props.date) { //FIXME this method to only moment Date
+        const { mode, minDate, maxDate, format = FORMATS[mode] } = this.props;
 
         if (!date) {
-            let now = new Date();
+            const now = new Date();
             if (minDate) {
-                let _minDate = this.getDate(minDate);
+                const _minDate = this.getDate(minDate);
 
                 if (now < _minDate) {
                     return _minDate;
@@ -92,7 +92,7 @@ class DatePicker extends React.Component {
             }
 
             if (maxDate) {
-                let _maxDate = this.getDate(maxDate);
+                const _maxDate = this.getDate(maxDate);
 
                 if (now > _maxDate) {
                     return _maxDate;
@@ -100,10 +100,6 @@ class DatePicker extends React.Component {
             }
 
             return now;
-        }
-
-        if (date instanceof Date) {
-            return date;
         }
 
         return moment(date, format).toDate();
@@ -114,9 +110,9 @@ class DatePicker extends React.Component {
 
         if (date instanceof Date) {
             return moment(date).format(format);
-        } else {
-            return moment(this.getDate(date)).format(format);
         }
+
+        return moment(this.getDate(date)).format(format);
     }
 
     datePicked() {
@@ -124,12 +120,12 @@ class DatePicker extends React.Component {
     }
 
     getTitleElement() {
-        const {date, placeholder, customStyles} = this.props;
+        const { date, placeholder } = this.props;
 
         if (!date && placeholder) {
-            return (<Text style={[Style.placeholderText, customStyles.placeholderText]}>{placeholder}</Text>);
+            return (<Text style={ Style.placeholderText }>{ placeholder }</Text>);
         }
-        return (<Text style={[Style.dateText, customStyles.dateText]}>{this.getDateStr()}</Text>);
+        return (<Text style={ Style.dateText }>{ this.getDateStr() }</Text>);
     }
 
     onDatePicked({action, year, month, day}) {
@@ -166,9 +162,11 @@ class DatePicker extends React.Component {
 
     onDatetimeTimePicked(year, month, day, {action, hour, minute}) {
         if (action !== DatePickerAndroid.dismissedAction) {
+
             this.setState({
                 date: new Date(year, month, day, hour, minute)
             });
+
             this.datePicked();
         }
     }
