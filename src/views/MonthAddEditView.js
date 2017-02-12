@@ -6,14 +6,13 @@ import { monthAddEditViewActions, ADD_ITEM } from '../actions/monthAddEditViewAc
 import { CHANGE_LABEL, CHANGE_PLACE, CHANGE_FULL_NAME, SAVE_ITEM } from '../actions/monthAddEditViewActions.js';
 import DatePicker from '../../components/DatePicker/DatePicker.js';
 
-
-import Calendar from '../../components/Calendar/Calendar.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 
 export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditViewActions)((props) => {
-    const custom = {date:"2016-05-15"}
+    const custom = {date:"2016-05-15"};
+
     return <View>
         <TextLabel label={'Тут будет хэдер.'} />
 

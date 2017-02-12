@@ -40,6 +40,7 @@ class DatePicker extends React.Component {
         this.onDatetimeTimePicked = this.onDatetimeTimePicked.bind(this);
         this.setModalIOSPickerVisible = this.setModalIOSPickerVisible.bind(this);
         this.renderIOSPicker = this.renderIOSPicker.bind(this);
+        this.renderModalWindowForIOSPicker = this.renderModalWindowForIOSPicker.bind(this);
     }
 
     setModalIOSPickerVisible (visible) {
@@ -224,68 +225,57 @@ class DatePicker extends React.Component {
         }
     }
 
-    renderIOSPicker () {
-        const {
-            mode,
-            customStyles,
-            minDate,
-            maxDate,
-            minuteInterval,
-            timeZoneOffsetInMinutes,
-            cancelBtnText,
-            confirmBtnText
-        } = this.props;
+    renderModalWindowForIOSPicker () {
+        const { mode, minDate, maxDate, minuteInterval, timeZoneOffsetInMinutes, cancelBtnText, confirmBtnText } = this.props;
 
-        return Platform.OS === 'ios' && <Modal
-            transparent={true}
+        return <Modal
+            transparent={ true }
             animationType="none"
-            visible={this.state.modalVisible}
-            supportedOrientations={["portrait"]}
-            onRequestClose={() => {this.setModalIOSPickerVisible(false);}}
+            visible={ this.state.modalVisible }
+            supportedOrientations={ ["portrait"] }
+            onRequestClose={ () => { this.setModalIOSPickerVisible(false) } }
         >
             <View
                 style={{flex: 1}}
             >
                 <TouchableHighlight
-                    style={Style.datePickerMask}
-                    activeOpacity={1}
-                    underlayColor={'#00000077'}
-                    onPress={this.onPressCancel}
+                    style={ Style.datePickerMask }
+                    activeOpacity={ 1 }
+                    underlayColor={ '#00000077' }
+                    onPress={ this.onPressCancel }
                 >
                     <TouchableHighlight
-                        underlayColor={'#fff'}
+                        underlayColor={ '#fff' }
                         style={{flex: 1}}
                     >
                         <Animated.View
-                            style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon]}
+                            style={[ Style.datePickerCon, { height: this.state.animatedHeight } ]}
                         >
                             <DatePickerIOS
-                                date={this.state.date}
-                                mode={mode}
-                                minimumDate={minDate && this.getDate(minDate)}
-                                maximumDate={maxDate && this.getDate(maxDate)}
-                                onDateChange={(date) => this.setState({date: date})}
-                                minuteInterval={minuteInterval}
-                                timeZoneOffsetInMinutes={timeZoneOffsetInMinutes}
-                                style={[Style.datePicker, customStyles.datePicker]}
+                                date={ this.state.date }
+                                mode={ mode }
+                                minimumDate={ minDate && this.getDate(minDate) }
+                                maximumDate={ maxDate && this.getDate(maxDate) }
+                                onDateChange={ (date) => this.setState({date: date}) }
+                                minuteInterval={ minuteInterval}
+                                timeZoneOffsetInMinutes={ timeZoneOffsetInMinutes }
+                                style={ Style.datePicker }
                             />
                             <TouchableHighlight
-                                underlayColor={'transparent'}
-                                onPress={this.onPressCancel}
-                                style={[Style.btnText, Style.btnCancel, customStyles.btnCancel]}
+                                underlayColor={ 'transparent' }
+                                onPress={ this.onPressCancel }
+                                style={[ Style.btnText, Style.btnCancel ]}
                             >
-                                <Text
-                                    style={[Style.btnTextText, Style.btnTextCancel, customStyles.btnTextCancel]}
-                                >
-                                    {cancelBtnText}
+                                <Text style={[ Style.btnTextText, Style.btnTextCancel ]}>
+                                    { cancelBtnText }
                                 </Text>
                             </TouchableHighlight>
                             <TouchableHighlight
-                                underlayColor={'transparent'}
-                                onPress={this.onPressConfirm}
-                                style={[Style.btnText, Style.btnConfirm, customStyles.btnConfirm]}
+                                underlayColor={ 'transparent' }
+                                onPress={ this.onPressConfirm }
+                                style={[ Style.btnText, Style.btnConfirm ]}
                             >
-                                <Text style={[Style.btnTextText, customStyles.btnTextConfirm]}>{confirmBtnText}</Text>
+                                <Text style={ Style.btnTextText }>{ confirmBtnText }</Text>
                             </TouchableHighlight>
                         </Animated.View>
                     </TouchableHighlight>
@@ -294,14 +284,13 @@ class DatePicker extends React.Component {
         </Modal>
     }
 
-    render() {
-        const { style, customStyles, disabled } = this.props;
+    renderIOSPicker () {
+        return Platform.OS === 'ios'
+            ? this.renderModalWindowForIOSPicker()
+            : null;
+    }
 
-        const dateInputStyle = [
-            Style.dateInput, customStyles.dateInput,
-            disabled && Style.disabled,
-            disabled && customStyles.disabled
-        ];
+    render() {
 
         return (
             <View  style={Style.inputComponent}>
