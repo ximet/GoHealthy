@@ -304,21 +304,26 @@ class DatePicker extends React.Component {
         ];
 
         return (
-            <TouchableHighlight
-                style={[Style.dateTouch, style]}
-                underlayColor={'transparent'}
-                onPress={this.onPressDate}
-            >
-                <View style={[Style.dateTouchBody]}>
-                    <View style={dateInputStyle}>
-                        <Text style={Style.inputLabel}>
-                            { this.props.label }
-                        </Text>
-                        {this.getTitleElement()}
-                    </View>
-                    {this.renderIOSPicker()}
+            <View  style={Style.inputComponent}>
+                <Text style={Style.inputLabel}>
+                    { this.props.label }
+                </Text>
+                <View style={Style.inputValue}>
+                    <TouchableHighlight
+                        style={Style.dateTouch}
+                        underlayColor={'transparent'}
+                        onPress={this.onPressDate}
+                        >
+                            <View style={Style.dateTouchBody}>
+
+
+                                {this.getTitleElement()}
+
+                                {this.renderIOSPicker()}
+                            </View>
+                    </TouchableHighlight>
                 </View>
-            </TouchableHighlight>
+            </View>
         );
     }
 }
