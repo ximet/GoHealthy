@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { monthAddEditViewSelector } from '../selectors/monthAddEditViewSelector.js';
 import { monthAddEditViewActions, ADD_ITEM } from '../actions/monthAddEditViewActions.js';
-import { CHANGE_LABEL, CHANGE_PLACE, CHANGE_FULL_NAME, SAVE_ITEM } from '../actions/monthAddEditViewActions.js';
+import { CHANGE_LABEL, CHANGE_FULL_NAME, CHANGE_DATE, CHANGE_TIME_FROM, CHANGE_TIME_TO, CHANGE_CATEGORY, CHANGE_DESCRIPTION, CHANGE_GROUP, CHANGE_PLACE, SAVE_ITEM, CHANGE_ACCEPT_VISIT } from '../actions/monthAddEditViewActions.js';
 import DatePicker from '../../components/DatePicker/DatePicker.js';
 
 import TextLabel from '../../components/TextLabel/TextLabel.js';
@@ -16,16 +16,9 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
     return <View>
         <TextLabel label={'Тут будет хэдер.'} />
 
-        <Input label="Enter Label"
-               onChange={ (text) => { props[CHANGE_LABEL](text)} }
+        <Input label="Содержание: "
+               onChange={ (text) => props[CHANGE_LABEL](text) }
                value={ props.label } />
-        <Input label="center Text"
-               onChange={ (text) => { props[CHANGE_PLACE](text)} }
-               value={ props.place } />
-
-        <Input label="doctor Text"
-               onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
-               value={ props.fullName } />
 
         <DatePicker
             label = { 'Дата визита: ' }
@@ -34,10 +27,59 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
             mode="date"
             placeholder="select date"
             format="YYYY-MM-DD"
-            minDate="2016-05-01"
-            maxDate="2016-06-01"
-            onDateChange={(date) => console.log('MyDate:', date)}
+            minDate="2000-05-01"
+            maxDate="2100-06-01"
+            onDateChange={(date) => props[CHANGE_DATE](date)}
         />
+
+        <DatePicker
+            label = { 'Время с: ' }
+            style={{width: 200}}
+            date={custom.date}
+            mode="time"
+            placeholder="select date"
+            format="YYYY-MM-DD"
+            minDate="2000-05-01"
+            maxDate="2100-06-01"
+            onDateChange={(date) => props[CHANGE_TIME_FROM](date)}
+        />
+
+        <DatePicker
+            label = { 'Время по: ' }
+            style={{width: 200}}
+            date={custom.date}
+            mode="time"
+            placeholder="select date"
+            format="YYYY-MM-DD"
+            minDate="2000-05-01"
+            maxDate="2100-06-01"
+            onDateChange={(date) => props[CHANGE_TIME_TO](date)}
+        />
+
+        <Input label="Категория: "
+               onChange={ (text) => { props[CHANGE_CATEGORY](text)} }
+               value={ props.place } />
+
+        <Input label="Описание: "
+               onChange={ (text) => { props[CHANGE_DESCRIPTION](text)} }
+               value={ props.place } />
+
+        <Input label="doctor Text"
+               onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
+               value={ props.fullName } />
+
+        <Input label="doctor Text"
+               onChange={ (text) => { props[CHANGE_GROUP](text)} }
+               value={ props.fullName } />
+
+        <Input label="doctor Text"
+               onChange={ (text) => { props[CHANGE_PLACE](text)} }
+               value={ props.fullName } />
+
+        <Input label="doctor Text"
+               onChange={ (text) => { props[CHANGE_ACCEPT_VISIT](text)} }
+               value={ props.fullName } />
+
 
         <Button
             label={ 'Сохранить' }
