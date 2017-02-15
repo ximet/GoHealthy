@@ -64,19 +64,19 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
                onChange={ (text) => { props[CHANGE_DESCRIPTION](text)} }
                value={ props.place } />
 
-        <Input label="doctor Text"
+        <Input label="ФИО: "
                onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
                value={ props.fullName } />
 
-        <Input label="doctor Text"
+        <Input label="Группа: "
                onChange={ (text) => { props[CHANGE_GROUP](text)} }
                value={ props.fullName } />
 
-        <Input label="doctor Text"
+        <Input label="Место: "
                onChange={ (text) => { props[CHANGE_PLACE](text)} }
                value={ props.fullName } />
 
-        <Input label="doctor Text"
+        <Input label="Подтвердить посещение: "
                onChange={ (text) => { props[CHANGE_ACCEPT_VISIT](text)} }
                value={ props.fullName } />
 
