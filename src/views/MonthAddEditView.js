@@ -23,7 +23,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         <DatePicker
             label = { 'Дата визита: ' }
             style={{width: 200}}
-            date={custom.date}
+            date={props.date}
             mode="date"
             placeholder="select date"
             format="YYYY-MM-DD"
@@ -35,7 +35,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         <DatePicker
             label = { 'Время с: ' }
             style={{width: 200}}
-            date={custom.date}
+            date={props.timeFrom}
             mode="time"
             placeholder="select date"
             format="YYYY-MM-DD"
@@ -47,7 +47,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         <DatePicker
             label = { 'Время по: ' }
             style={{width: 200}}
-            date={custom.date}
+            date={props.timeTo}
             mode="time"
             placeholder="select date"
             format="YYYY-MM-DD"
@@ -58,11 +58,11 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
 
         <Input label="Категория: "
                onChange={ (text) => { props[CHANGE_CATEGORY](text)} }
-               value={ props.place } />
+               value={ props.category } />
 
         <Input label="Описание: "
                onChange={ (text) => { props[CHANGE_DESCRIPTION](text)} }
-               value={ props.place } />
+               value={ props.description } />
 
         <Input label="ФИО: "
                onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
@@ -70,15 +70,15 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
 
         <Input label="Группа: "
                onChange={ (text) => { props[CHANGE_GROUP](text)} }
-               value={ props.fullName } />
+               value={ props.group } />
 
         <Input label="Место: "
                onChange={ (text) => { props[CHANGE_PLACE](text)} }
-               value={ props.fullName } />
+               value={ props.place } />
 
         <Input label="Подтвердить посещение: "
                onChange={ (text) => { props[CHANGE_ACCEPT_VISIT](text)} }
-               value={ props.fullName } />
+               value={ props.acceptInvite } />
 
 
         <Button

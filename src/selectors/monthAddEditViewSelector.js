@@ -16,14 +16,26 @@ export const monthAddEditViewSelector = createSelector(
         getLabel,
         getPlace,
         getFullName,
-        getDate
+        getDate,
+        getTimeFrom,
+        getTimeTo,
+        getCategory,
+        getDescription,
+        getGroup,
+        getAcceptVisit
     ],
-    ( label, place, fullName, date ) => {
+    ( label, place, fullName, date, timeFrom, timeTo, category, description, group, acceptInvite ) => {
         return {
             label,
             place,
             fullName,
-            date
+            date,
+            timeFrom,
+            timeTo,
+            category,
+            description,
+            group,
+            acceptInvite
         };
     }
 );
