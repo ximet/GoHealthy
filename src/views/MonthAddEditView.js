@@ -77,11 +77,8 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
                onChange={ (text) => { props[CHANGE_PLACE](text)} }
                value={ props.place } />
 
-        <Input label="Подтвердить посещение: "
-               onChange={ (text) => { props[CHANGE_ACCEPT_VISIT](text)} }
-               value={ props.acceptInvite } />
 
-        <Switch onChangeState={(state)=>{alert(state)}}/>
+        <Switch onChangeState={(state)=>{ props[CHANGE_ACCEPT_VISIT](state) }}/>
 
 
         <Button
