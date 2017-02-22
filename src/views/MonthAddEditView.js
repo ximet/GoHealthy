@@ -5,6 +5,7 @@ import { monthAddEditViewSelector } from '../selectors/monthAddEditViewSelector.
 import { monthAddEditViewActions, ADD_ITEM } from '../actions/monthAddEditViewActions.js';
 import { CHANGE_LABEL, CHANGE_FULL_NAME, CHANGE_DATE, CHANGE_TIME_FROM, CHANGE_TIME_TO, CHANGE_CATEGORY, CHANGE_DESCRIPTION, CHANGE_GROUP, CHANGE_PLACE, SAVE_ITEM, CHANGE_ACCEPT_VISIT } from '../actions/monthAddEditViewActions.js';
 import DatePicker from '../../components/DatePicker/DatePicker.js';
+import Switch from '../../components/Switch/Switch.js';
 
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import Input from '../../components/Input/Input.js';
@@ -79,6 +80,8 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         <Input label="Подтвердить посещение: "
                onChange={ (text) => { props[CHANGE_ACCEPT_VISIT](text)} }
                value={ props.acceptInvite } />
+
+        <Switch onChangeState={(state)=>{alert(state)}}/>
 
 
         <Button

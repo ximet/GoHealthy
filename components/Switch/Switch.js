@@ -13,7 +13,7 @@ class Switch extends React.Component {
         const w = this.props.switchWidth - Math.min(this.props.switchHeight, this.props.buttonRadius*2);
 
         this.padding = 2;
-
+        this.start = {};
         this.state = {
             width: w,
             state: this.props.active,
@@ -24,6 +24,7 @@ class Switch extends React.Component {
 
 
     componentWillMount () {
+        const self = this;
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (evt, gestureState) => true,
             onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
@@ -31,66 +32,76 @@ class Switch extends React.Component {
             onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
             onPanResponderGrant: (evt, gestureState) => {
-                if (!this.props.enableSlide) return;
 
-                this.setState({pressed: true});
-                this.start.x0 = gestureState.x0;
-                this.start.pos = this.state.position._value;
-                this.start.moved = false;
-                this.start.state = this.state.state;
-                this.start.stateChanged = false;
+                if (!self.props.enableSlide) {
+                    return;
+                }
+
+                self.setState({pressed: true});
+                self.start.x0 = gestureState.x0;
+                self.start.pos = self.state.position._value;
+                self.start.moved = false;
+                self.start.state = self.state.state;
+                self.start.stateChanged = false;
             },
             onPanResponderMove: (evt, gestureState) => {
-                if (!this.props.enableSlide) return;
+                if (!self.props.enableSlide) {
+                    return;
+                }
 
-                this.start.moved = true;
-                if (this.start.pos == 0) {
-                    if (gestureState.dx <= this.state.width && gestureState.dx >= 0) {
-                        this.state.position.setValue(gestureState.dx);
+                self.start.moved = true;
+                if (self.start.pos == 0) {
+                    if (gestureState.dx <= self.state.width && gestureState.dx >= 0) {
+                        self.state.position.setValue(gestureState.dx);
                     }
-                    if (gestureState.dx > this.state.width) {
-                        this.state.position.setValue(this.state.width);
+                    if (gestureState.dx > self.state.width) {
+                        self.state.position.setValue(self.state.width);
                     }
                     if (gestureState.dx < 0) {
-                        this.state.position.setValue(0);
+                        self.state.position.setValue(0);
                     }
                 }
-                if (this.start.pos == this.state.width) {
-                    if (gestureState.dx >= -this.state.width && gestureState.dx <= 0) {
-                        this.state.position.setValue(this.state.width+gestureState.dx);
+                if (self.start.pos == self.state.width) {
+                    if (gestureState.dx >= -self.state.width && gestureState.dx <= 0) {
+                        self.state.position.setValue(self.state.width+gestureState.dx);
                     }
                     if (gestureState.dx > 0) {
-                        this.state.position.setValue(this.state.width);
+                        self.state.position.setValue(self.state.width);
                     }
-                    if (gestureState.dx < -this.state.width) {
-                        this.state.position.setValue(0);
+                    if (gestureState.dx < -self.state.width) {
+                        self.state.position.setValue(0);
                     }
                 }
-                var currentPos = this.state.position._value;
-                this.onSwipe(currentPos, this.start.pos,
+
+                const currentPos = self.state.position._value;
+
+                self.onSwipe(currentPos, self.start.pos,
                     () => {
-                        if (!this.start.state) this.start.stateChanged = true;
-                        this.setState({state: true})
+                        if (!self.start.state) self.start.stateChanged = true;
+                        self.setState({state: true})
                     },
                     ()=>{
-                        if (this.start.state) this.start.stateChanged = true;
-                        this.setState({state: false})
+                        if (self.start.state) self.start.stateChanged = true;
+                        self.setState({state: false})
                     });
             },
             onPanResponderTerminationRequest: (evt, gestureState) => true,
             onPanResponderRelease: (evt, gestureState) => {
-                this.setState({pressed: false});
-                var currentPos = this.state.position._value;
-                if (!this.start.moved || (Math.abs(currentPos-this.start.pos)<5 && !this.start.stateChanged)) {
-                    this.toggle();
+                self.setState({pressed: false});
+
+                const currentPos = self.state.position._value;
+
+                if (!self.start.moved || (Math.abs(currentPos-self.start.pos)<5 && !self.start.stateChanged)) {
+                    self.toggle();
                     return;
                 }
-                this.onSwipe(currentPos, this.start.pos, this.activate, this.deactivate);
+                self.onSwipe(currentPos, self.start.pos, self.activate, self.deactivate);
             },
             onPanResponderTerminate: (evt, gestureState) => {
-                var currentPos = this.state.position._value;
-                this.setState({pressed: false});
-                this.onSwipe(currentPos, this.start.pos, this.activate, this.deactivate);
+                const currentPos = self.state.position._value;
+
+                self.setState({pressed: false});
+                self.onSwipe(currentPos, self.start.pos, self.activate, self.deactivate);
             },
             onShouldBlockNativeResponder: (evt, gestureState) => true,
         });
@@ -135,7 +146,8 @@ class Switch extends React.Component {
     }
 
     changeState (state) {
-        var callHandlers = this.start.state != state;
+        const callHandlers = this.start.state != state;
+
         setTimeout(() => {
             this.setState({state : state});
             if (callHandlers) {
@@ -145,7 +157,8 @@ class Switch extends React.Component {
     }
 
     callback () {
-        var state = this.state.state;
+        const state = this.state.state;
+
         if (state) {
             this.props.onActivate();
         } else {
@@ -165,8 +178,9 @@ class Switch extends React.Component {
     }
 
     render () {
-        var doublePadding = this.padding*2-2;
-        var halfPadding = doublePadding/2;
+        const doublePadding = this.padding * 2 - 2;
+        const halfPadding = doublePadding / 2;
+
         return (
             <View
                 {...this._panResponder.panHandlers}
@@ -211,7 +225,7 @@ class Switch extends React.Component {
     }
 }
 Switch.propTypes = {
-   
+
 };
 
 Switch.defaultProps = {
