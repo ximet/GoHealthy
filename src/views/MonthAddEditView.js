@@ -9,6 +9,7 @@ import LabelSwitcher from '../../components/LabelSwitcher/LabelSwitcher.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
+import data from '../data/infoMonthData.json';
 
 export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditViewActions)((props) => {
 
