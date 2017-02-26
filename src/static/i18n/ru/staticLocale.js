@@ -1,13 +1,12 @@
 export default {
-    "content": "Содержание: ",
-    "dateOfVisit": "Дата визита: ",
-    "timeFrom": "Время с: ",
-    "timeTo": "Время по: ",
-    "category": "Категория: ",
-    "description": "Описание: ",
-    "fullName": "ФИО: ",
-    "group": "Группа: ",
-    "place": "Место: ",
-    "acceptVisit": "Подтвердить посещение: ",
-    "save": "Сохранить"
+    "content": "Содержание * ",
+    "dateOfVisit": "Дата визита * ",
+    "timeFrom": "Время начала * ",
+    "timeTo": "Время окончания ",
+    "category": "Категория * ",
+    "description": "Дополнительные сведения ",
+    "place": "Медицинское учредждение ",
+    "fullName": "ФИО специалиста ",
+    "group": "Группа ",
+    "acceptVisit": "Подтвердить посещение "
 };

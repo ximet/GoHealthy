@@ -1,14 +1,12 @@
 export default {
-    "content": "",
-    "dateOfVisit": "",
-    "timeFrom": "",
-    "timeTo": "",
-    "category": "",
-    "description": "",
-    "fullName": "",
-    "group": "",
-    "place": "",
-    "acceptVisit": "",
-    "save": ""
+    "content": "Content * ",
+    "dateOfVisit": "Date * ",
+    "timeFrom": "From Time * ",
+    "timeTo": "To Time ",
+    "category": "Category * ",
+    "description": "Additional Info ",
+    "place": "Medical Facility ",
+    "fullName": "Doctor's Full Name ",
+    "group": "Group ",
+    "acceptVisit": "Confirm the Visit "
 };
-
