@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
         borderRadius: 40
     },
     currentDayCircle: {
-
+        backgroundColor: '#abc1d2'
     },
     currentDayText: {
-        color: 'red'
+        color: 'black'
     },
     selectedDayCircle: {
         backgroundColor: '#afc6e9'

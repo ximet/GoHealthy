@@ -7,13 +7,13 @@ class Day extends React.Component {
 
     getTouchableDayStyle = (customStyle, isWeekend, isSelected, isToday, event) => {
         const dayStyle = [ styles.dayCircleFiller, customStyle.dayCircleFiller ];
-
+        if (isToday) {
+            dayStyle.push(styles.currentDayCircle, customStyle.currentDayCircle);
+        }
         if (isSelected) {
-            if (isToday) {
-                dayStyle.push(styles.currentDayCircle, customStyle.currentDayCircle);
-            } else {
+
                 dayStyle.push(styles.selectedDayCircle, customStyle.selectedDayCircle);
-            }
+
         }
 
         if (event) {

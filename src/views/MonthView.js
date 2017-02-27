@@ -30,8 +30,8 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                 <TextLabel label={'Тут будет хэдер.'} />
                 {getHeader(props[ADD_ITEM])}
                 <Calendar
-                    eventDates={['2016-07-03', '2016-07-05', '2016-07-28', '2016-07-30']}
-                    events={[{date: '2016-07-04', hasEventCircle: {backgroundColor: 'powderblue'}}]}
+                    eventDates={['2017-01-02', '2017-01-03']}
+                    events={[{date: '2017-02-03', hasEventCircle: {backgroundColor: 'powderblue'}}]}
                     scrollEnabled
                     showControls
                     monthNames={ monthNames }
