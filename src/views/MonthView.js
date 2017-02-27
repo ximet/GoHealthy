@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { monthViewSelector } from '../selectors/monthViewSelector.js';
-import { monthViewActions, ADD_ITEM } from '../actions/monthViewActions.js';
+import { monthViewActions, ADD_ITEM, SELECT_DATE } from '../actions/monthViewActions.js';
 import { getTitleCalendarFormat, getCurrentDate, monthNames, dayNames } from '../services/DateService.js';
 
 import Calendar from '../../components/Calendar/Calendar.js';
@@ -13,7 +13,7 @@ import Button from '../../components/Button/Button.js';
 const getList = (items) => {
     return items.length > 0
         ? (<WeekList items={items}/>)
-        : (<TextLabel label={'На этот месяц ничего не запланировано.'} />)
+        : (<TextLabel label={'На этот день ничего не запланировано.'} />)
 };
 
 const getFooter = (actionForButton) => {
@@ -37,6 +37,7 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                     titleFormat={ getTitleCalendarFormat() }
                     dayHeadings = { dayNames }
                     today={ getCurrentDate() }
+                    onDateSelect={(date) => props[SELECT_DATE](date)}
                 />
 
                 {getList(props.items)}

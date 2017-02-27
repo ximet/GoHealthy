@@ -2,14 +2,16 @@ import { createSelector } from 'reselect';
 import { getFullFutureState } from './crudSelector.js';
 
 const getCurrentMonthViewState = state => getFullFutureState(state, 'MonthViewElement');
+export const getSelectedDate = (state) => state['monthViewReducer'].getIn([ 'selectedDate' ]);
 
 
 export const monthViewSelector = createSelector(
     [
-        getCurrentMonthViewState
+        getCurrentMonthViewState,
+        getSelectedDate
     ],
-    ( monthItems ) => {
-        const items = monthItems;
+    ( monthItems, selectDate ) => {
+        const items = monthItems.filter(item => item.dateText === selectDate);
         const events = monthItems.map(item => {
                 return {
                     date: item.dateText
