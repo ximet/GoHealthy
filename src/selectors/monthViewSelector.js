@@ -10,9 +10,10 @@ export const monthViewSelector = createSelector(
     ],
     ( monthItems ) => {
         const items = monthItems;
-
+        const events = [{date: '2017-02-03'}];
         return {
-            items
+            items,
+            events
         };
     }
 );

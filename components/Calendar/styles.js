@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         width: 45,
         height: 45,
-        borderRadius: 40
+        borderRadius: 40,
+        position: 'relative'
     },
     currentDayCircle: {
         backgroundColor: '#abc1d2'
@@ -82,6 +83,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#afc6e9'
     },
     hasEventCircle: {
+        backgroundColor: 'transparent'
+    },
+    hasEventUnderDayCircle: {
+        width: 8,
+        height: 8,
+        borderRadius: 50,
+        backgroundColor: 'red',
+        position: 'absolute',
+        top: 40,
+        left: 18
+    },
+    hasEventUnderDayCircleSelected: {
+
     },
     hasEventDaySelectedCircle: {
     },

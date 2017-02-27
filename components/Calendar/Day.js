@@ -20,7 +20,7 @@ class Day extends React.Component {
             if (isSelected) {
                 dayStyle.push(styles.hasEventDaySelectedCircle, customStyle.hasEventDaySelectedCircle, event.hasEventDaySelectedCircle);
             } else {
-                dayStyle.push(styles.hasEventCircle, customStyle.hasEventCircle, event.hasEventCircle);
+                dayStyle.push(styles.hasEventCircle);
             }
         }
         return dayStyle;
@@ -41,6 +41,19 @@ class Day extends React.Component {
             dayLabelStyle.push(styles.hasEventText, customStyle.hasEventText, event.hasEventText)
         }
         return dayLabelStyle;
+    };
+
+    getUnderCircle = (isSelected, event) => {
+        const underDayStyle = [];
+        if (event) {
+            if (isSelected) {
+                underDayStyle.push(styles.hasEventUnderDayCircleSelected);
+            } else {
+                underDayStyle.push(styles.hasEventUnderDayCircle);
+            }
+        }
+
+        return underDayStyle;
     };
 
     render() {
@@ -67,7 +80,10 @@ class Day extends React.Component {
                 <TouchableOpacity onPress={ this.props.onPress }>
                     <View style={ [ styles.dayButton, customStyle.dayButton ] }>
                         <View style={ this.getTouchableDayStyle(customStyle, isWeekend, isSelected, isToday, event) }>
-                            <Text style={ this.getDayLabelStyle(customStyle, isWeekend, isSelected, isToday, event) }>{ caption }</Text>
+                            <Text style={ this.getDayLabelStyle(customStyle, isWeekend, isSelected, isToday, event) }>
+                                { caption }
+                            </Text>
+                            <View style={ this.getUnderCircle(isSelected, event) } />
                         </View>
                         { showEventIndicators &&
                             <View style={ [

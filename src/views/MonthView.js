@@ -30,19 +30,13 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                 <TextLabel label={'Тут будет хэдер.'} />
                 {getHeader(props[ADD_ITEM])}
                 <Calendar
-                    eventDates={['2017-01-02', '2017-01-03']}
-                    events={[{date: '2017-02-03', hasEventCircle: {backgroundColor: 'powderblue'}}]}
+                    events={ props.events }
                     scrollEnabled
                     showControls
                     monthNames={ monthNames }
                     titleFormat={ getTitleCalendarFormat() }
                     dayHeadings = { dayNames }
                     today={ getCurrentDate() }
-                    onDateSelect={(date) => console.log('Date selected:', date)}
-                    onTouchPrev={() => console.log('Back TOUCH')}     // eslint-disable-line no-console
-                    onTouchNext={() => console.log('Forward TOUCH')}  // eslint-disable-line no-console
-                    onSwipePrev={() => console.log('Back SWIPE')}     // eslint-disable-line no-console
-                    onSwipeNext={() => console.log('Forward SWIPE')}  // eslint-disable-line no-console
                 />
 
                 {getList(props.items)}
