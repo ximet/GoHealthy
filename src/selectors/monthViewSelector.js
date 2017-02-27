@@ -10,7 +10,11 @@ export const monthViewSelector = createSelector(
     ],
     ( monthItems ) => {
         const items = monthItems;
-        const events = [{date: '2017-02-03'}];
+        const events = monthItems.map(item => {
+                return {
+                    date: item.dateText
+                }
+            });
         return {
             items,
             events

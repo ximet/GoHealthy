@@ -37,7 +37,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
             date={props.timeFrom}
             mode="time"
             placeholder="select date"
-            format="YYYY-MM-DD"
+            format="HH:mm"
             minDate="2000-05-01"
             maxDate="2100-06-01"
             onDateChange={(date) => props[CHANGE_TIME_FROM](date)}
@@ -49,7 +49,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
             date={props.timeTo}
             mode="time"
             placeholder="select date"
-            format="YYYY-MM-DD"
+            format="HH:mm"
             minDate="2000-05-01"
             maxDate="2100-06-01"
             onDateChange={(date) => props[CHANGE_TIME_TO](date)}
