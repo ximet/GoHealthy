@@ -1,0 +1,13 @@
+RowComponent {
+    height: auto;
+}
+
+RowElastic {
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+RowNotElastic {
+    overflow: hidden;
+}

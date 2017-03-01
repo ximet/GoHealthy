@@ -1,0 +1,1 @@
+module.exports = require('react-native').StyleSheet.create({"RowComponent":{"height":null},"RowElastic":{"flex":1,"overflow":"auto","WebkitOverflowScrolling":"touch"},"RowNotElastic":{"overflow":"hidden"}});
