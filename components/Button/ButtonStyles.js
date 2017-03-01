@@ -1,0 +1,1 @@
+module.exports = require('react-native').StyleSheet.create({"buttonComponent":{"marginTop":7,"marginBottom":7,"marginLeft":20,"marginRight":20},"buttonContainer":{"flexDirection":"row","borderTopWidth":1,"borderTopColor":"#bebebe"},"buttonLabel":{"flex":1,"textAlign":"center","fontSize":18,"color":"#4e92df","paddingTop":7,"paddingBottom":7,"paddingLeft":0,"paddingRight":0}});

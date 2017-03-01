@@ -1,0 +1,18 @@
+buttonComponent {
+    display: flex;
+    margin: 7px 20px;
+}
+
+buttonContainer {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #bebebe;
+}
+
+buttonLabel {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    color: #4e92df;
+    padding: 7px 0;
+}

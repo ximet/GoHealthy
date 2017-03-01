@@ -7,13 +7,15 @@ import {
     View
 } from 'react-native';
 
+import styles from './ButtonStyles.js';
+
 const Button = (props) => {
     return (
-        <TouchableOpacity onPress={ props.onPressButton }>
-            <View>
-                <Text>
-                { props.label }
-            </Text>
+        <TouchableOpacity onPress={ props.onPressButton } style={styles.buttonComponent}>
+            <View style={styles.buttonContainer}>
+                <Text style={styles.buttonLabel}>
+                    { props.label }
+                </Text>
             </View>
         </TouchableOpacity>
     );
