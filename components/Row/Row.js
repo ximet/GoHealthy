@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import styles from './RowStyles.js';
 
 const Row = (props) => {
-    const styleElastic = props.elastic ? styles.RowElastic : styles.RowNotElastic;
+    const styleElastic = props.isElastic ? styles.RowElastic : styles.RowNotElastic;
 
     return (
         <View style={[ styles.RowComponent, styleElastic ]}>
@@ -14,12 +14,12 @@ const Row = (props) => {
 };
 
 Row.propTypes = {
-    elastic: React.PropTypes.bool,
+    isElastic: React.PropTypes.bool,
     label: React.PropTypes.string
 };
 
 Row.defaultProps = {
-    elastic: false
+    isElastic: false
 };
 
 export default Row;

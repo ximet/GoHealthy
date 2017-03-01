@@ -1,11 +1,11 @@
 RowComponent {
-    height: auto;
+    flex-direction: column;
+
 }
 
 RowElastic {
-    flex: 1;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    height: 620px;
+    overflow: scroll;
 }
 
 RowNotElastic {

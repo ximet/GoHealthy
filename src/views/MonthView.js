@@ -9,6 +9,7 @@ import Calendar from '../../components/Calendar/Calendar.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import WeekList from '../../components/WeekList/WeekList.js';
 import Button from '../../components/Button/Button.js';
+import Row from '../../components/Row/Row.js';
 
 const getList = (items) => {
     return items.length > 0
@@ -27,20 +28,22 @@ const getHeader = (actionForButton) => {
 export const MonthView = connect(monthViewSelector, monthViewActions)((props) => {
 
     return <View>
-                <TextLabel label={'Тут будет хэдер.'} />
-                {getHeader(props[ADD_ITEM])}
-                <Calendar
-                    events={ props.events }
-                    scrollEnabled
-                    showControls
-                    monthNames={ monthNames }
-                    titleFormat={ getTitleCalendarFormat() }
-                    dayHeadings = { dayNames }
-                    today={ getCurrentDate() }
-                    onDateSelect={(date) => props[SELECT_DATE](date)}
-                />
+                <Row isElastic={true}>
+                    <TextLabel label={'Тут будет хэдер.'} />
+                    {getHeader(props[ADD_ITEM])}
+                    <Calendar
+                        events={ props.events }
+                        scrollEnabled
+                        showControls
+                        monthNames={ monthNames }
+                        titleFormat={ getTitleCalendarFormat() }
+                        dayHeadings = { dayNames }
+                        today={ getCurrentDate() }
+                        onDateSelect={(date) => props[SELECT_DATE](date)}
+                    />
 
-                {getList(props.items)}
+                    {getList(props.items)}
+                </Row>
                 {getFooter(() => {})}
         </View>
 });
