@@ -1,6 +1,5 @@
 RowComponent {
-    flex-direction: row;
-
+    flex-direction: column;
 }
 
 RowElastic {

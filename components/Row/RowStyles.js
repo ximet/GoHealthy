@@ -1,1 +1,1 @@
-module.exports = require('react-native').StyleSheet.create({"RowComponent":{"flexDirection":"row"},"RowElastic":{"flex":1,"overflow":"scroll"},"RowNotElastic":{"overflow":"hidden"}});
+module.exports = require('react-native').StyleSheet.create({"RowComponent":{"flexDirection":"column"},"RowElastic":{"flex":1,"overflow":"scroll"},"RowNotElastic":{"overflow":"hidden"}});
