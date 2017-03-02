@@ -9,10 +9,13 @@ import LabelSwitcher from '../../components/LabelSwitcher/LabelSwitcher.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
+import Row from '../../components/Row/Row.js';
+import ViewScreen from '../../components/ViewScreen/ViewScreen.js';
 
 export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditViewActions)((props) => {
 
-    return <View>
+    return <ViewScreen>
+        <Row isElastic={true}>
         <TextLabel label={'Тут будет хэдер.'} />
 
         <Input label="Содержание: "
@@ -79,10 +82,10 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         <LabelSwitcher  label="Подтвердить посещение: "
                         onChangeState={(state)=>{ props[CHANGE_ACCEPT_VISIT](state) }} />
 
-
+        </Row>
         <Button
             label={ 'Сохранить' }
             onPressButton={ props[SAVE_ITEM] }
         />
-    </View>
+    </ViewScreen>
 });

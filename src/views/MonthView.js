@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { monthViewSelector } from '../selectors/monthViewSelector.js';
-import { monthViewActions, ADD_ITEM, SELECT_DATE } from '../actions/monthViewActions.js';
+import { monthViewActions, ADD_ITEM, SELECT_DATE, CURENT_MONTH } from '../actions/monthViewActions.js';
 import { getTitleCalendarFormat, getCurrentDate, monthNames, dayNames } from '../services/DateService.js';
 
-import Calendar from '../../components/Calendar/Calendar.js';
+import CalendarList from '../../components/CalendarList/CalendarList.js';
 import TextLabel from '../../components/TextLabel/TextLabel.js';
 import WeekList from '../../components/WeekList/WeekList.js';
 import Button from '../../components/Button/Button.js';
@@ -32,11 +32,9 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                 <Row isElastic={true}>
                     <TextLabel label={'Тут будет хэдер.'} />
                     {getHeader(props[ADD_ITEM])}
-                    <Calendar
-                        events={ props.events }
-                        scrollEnabled
-                        showControls
-                        monthNames={ monthNames }
+                    <CalendarList
+                        titleCalendar={ 'Март' }
+                        eventsCalendar={ props.events }
                         titleFormat={ getTitleCalendarFormat() }
                         dayHeadings = { dayNames }
                         today={ getCurrentDate() }
@@ -45,6 +43,6 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
 
                     {getList(props.items)}
                 </Row>
-                {getFooter(() => {})}
+                {getFooter(props[CURENT_MONTH])}
         </ViewScreen>
 });
