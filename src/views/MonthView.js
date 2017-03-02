@@ -10,6 +10,7 @@ import TextLabel from '../../components/TextLabel/TextLabel.js';
 import WeekList from '../../components/WeekList/WeekList.js';
 import Button from '../../components/Button/Button.js';
 import Row from '../../components/Row/Row.js';
+import ViewScreen from '../../components/ViewScreen/ViewScreen.js';
 
 const getList = (items) => {
     return items.length > 0
@@ -27,7 +28,7 @@ const getHeader = (actionForButton) => {
 
 export const MonthView = connect(monthViewSelector, monthViewActions)((props) => {
 
-    return <View>
+    return <ViewScreen>
                 <Row isElastic={true}>
                     <TextLabel label={'Тут будет хэдер.'} />
                     {getHeader(props[ADD_ITEM])}
@@ -45,5 +46,5 @@ export const MonthView = connect(monthViewSelector, monthViewActions)((props) =>
                     {getList(props.items)}
                 </Row>
                 {getFooter(() => {})}
-        </View>
+        </ViewScreen>
 });

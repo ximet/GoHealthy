@@ -1,10 +1,10 @@
 RowComponent {
-    flex-direction: column;
+    flex-direction: row;
 
 }
 
 RowElastic {
-    height: 620px;
+    flex: 1;
     overflow: scroll;
 }
 
