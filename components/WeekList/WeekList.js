@@ -7,8 +7,8 @@ const WeekList = (props) => {
     const dataSource = ds.cloneWithRows(props.items);
 
     return (
-        <View>
-            <ListView
+        <View style={{ flex: 1 }}>
+            <ListView style={{ flex: 1 }}
                 dataSource={dataSource}
                 renderRow={(rowData) => <WeekListItem label={rowData.label}
                                                       dateText={rowData.dateText}
