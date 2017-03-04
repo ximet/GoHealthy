@@ -9,14 +9,14 @@ const CalendarList = (props) => {
 
     return (
         <View style={ styles.CalendarListComponent }>
-            <View>
-                <Text>
+            <View style={ styles.CalendarListHeader }>
+                <Text style={ styles.CalendarListTitle }>
                     { props.titleCalendar }
                 </Text>
             </View>
             <View>
-                <View>
-                    <Icon />
+                <View style={ styles.CalendarListHidePanel }>
+                    <Icon name={'keyboard-arrow-down'} size={45}/>
                 </View>
                 <Calendar
                     events={ props.eventsCalendar }
