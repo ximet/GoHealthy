@@ -11,6 +11,7 @@ import Input from '../../components/Input/Input.js';
 import Button from '../../components/Button/Button.js';
 import Row from '../../components/Row/Row.js';
 import ViewScreen from '../../components/ViewScreen/ViewScreen.js';
+import * as staticLocale from '../static/i18n/en/staticLocale.js'
 
 export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditViewActions)((props) => {
 
@@ -18,12 +19,12 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         <Row isElastic={true}>
         <TextLabel label={'Тут будет хэдер.'} />
 
-        <Input label="Содержание: "
+        <Input label={staticLocale.content}
                onChange={ (text) => props[CHANGE_LABEL](text) }
                value={ props.label } />
 
         <DatePicker
-            label = { 'Дата визита: ' }
+            label = { staticLocale.dateOfVisit }
             style={{width: 200}}
             date={props.date}
             mode="date"
@@ -35,7 +36,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         />
 
         <DatePicker
-            label = { 'Время с: ' }
+            label = {staticLocale.timeFrom}
             style={{width: 200}}
             date={props.timeFrom}
             mode="time"
@@ -47,7 +48,7 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         />
 
         <DatePicker
-            label = { 'Время по: ' }
+            label = {staticLocale.timeTo}
             style={{width: 200}}
             date={props.timeTo}
             mode="time"
@@ -58,28 +59,28 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
             onDateChange={(date) => props[CHANGE_TIME_TO](date)}
         />
 
-        <Input label="Категория: "
+        <Input label={staticLocale.category}
                onChange={ (text) => { props[CHANGE_CATEGORY](text)} }
                value={ props.category } />
 
-        <Input label="Описание: "
+        <Input label={staticLocale.description}
                onChange={ (text) => { props[CHANGE_DESCRIPTION](text)} }
                value={ props.description } />
 
-        <Input label="ФИО: "
+        <Input label={staticLocale.fullName}
                onChange={ (text) => { props[CHANGE_FULL_NAME](text)} }
                value={ props.fullName } />
 
-        <Input label="Группа: "
+        <Input label={staticLocale.group}
                onChange={ (text) => { props[CHANGE_GROUP](text)} }
                value={ props.group } />
 
-        <Input label="Место: "
+        <Input label={staticLocale.place}
                onChange={ (text) => { props[CHANGE_PLACE](text)} }
                value={ props.place } />
 
 
-        <LabelSwitcher  label="Подтвердить посещение: "
+        <LabelSwitcher  label={staticLocale.acceptVisit}
                         onChangeState={(state)=>{ props[CHANGE_ACCEPT_VISIT](state) }} />
 
         </Row>
