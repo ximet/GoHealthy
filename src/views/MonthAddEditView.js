@@ -13,7 +13,7 @@ import Row from '../../components/Row/Row.js';
 import ViewScreen from '../../components/ViewScreen/ViewScreen.js';
 import * as staticLocale from '../static/i18n/en/staticLocale.js'
 
-export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditViewActions)((props) => {
+export const MonthAddEditView = connect(mapStateToProps, monthAddEditViewActions)((props) => {
 
     return <ViewScreen>
         <Row isElastic={true}>
@@ -90,3 +90,11 @@ export const MonthAddEditView = connect(monthAddEditViewSelector, monthAddEditVi
         />
     </ViewScreen>
 });
+
+export const mapStateToProps = (state) => {
+    return {
+        label: state['monthAddEditViewReducer'].getIn([ 'label' ]),
+        date: ,
+        timeFrom:
+    };
+};
