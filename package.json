@@ -18,6 +18,7 @@
     "react-dom": "^15.6.1",
     "react-native": "^0.40.0",
     "react-native-datepicker": "^1.4.3",
+    "react-native-ui-kitten": "^2.0.1",
     "react-native-vector-icons": "^3.0.0",
     "react-native-web": "0.0.65",
     "react-redux": "^5.0.5",
