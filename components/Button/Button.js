@@ -1,23 +1,9 @@
 import React from 'react';
-import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
-} from 'react-native';
-
-import styles from './ButtonStyles.js';
+import { RkButton } from 'react-native-ui-kitten';
 
 const Button = (props) => {
     return (
-        <TouchableOpacity onPress={ props.onPressButton } style={styles.buttonComponent}>
-            <View style={styles.buttonContainer}>
-                <Text style={styles.buttonLabel}>
-                    { props.label }
-                </Text>
-            </View>
-        </TouchableOpacity>
+        <RkButton onPress={props.onPressButton}>{ props.label }</RkButton>
     );
 };
 
