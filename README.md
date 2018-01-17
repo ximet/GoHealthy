@@ -1,2 +1,3 @@
 # GoHealthy - ReactNative Application
 
+deprecated
